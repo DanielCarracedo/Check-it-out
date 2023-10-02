@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="BackGraund">
+    <file>BackGraund.png</file>
+  </qresource>
+  <qresource prefix="Check it out">
+    <file>Check_it_out-removebg-preview.png</file>
+  </qresource>
+</RCC>
