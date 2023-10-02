@@ -1,11 +1,10 @@
 from PyQt5.QtWidgets import QMainWindow, QApplication, QLineEdit
 from PyQt5 import QtCore, QtWidgets, uic
-from UI.Register import Register
 import sys
 
-class Login(QMainWindow):
+class Loginw(QMainWindow):
     def __init__(self):
-        super(Login, self).__init__()
+        super(Loginw, self).__init__()
         uic.loadUi("Log.ui",self)
         self.Bt_normal.hide()
         self.click_posicion = None
@@ -26,6 +25,7 @@ class Login(QMainWindow):
         self.grip.resize(self.gripSize, self.gripSize)
     
     def GuiRegister(self):
+        from UI.Register import Register
         self.hide()
         self.register_window = Register()  # Crear una instancia de Register
         self.register_window.show()  # Mostrar la ventana de registro
@@ -63,9 +63,9 @@ class Login(QMainWindow):
             self.showNormal()
             self.Bt_normal.hide()
             self.Bt_max.show()
-    
+  
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    my_app = Login()
+    my_app = Loginw()
     my_app.show()
     sys.exit(app.exec_())

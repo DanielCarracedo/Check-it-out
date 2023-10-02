@@ -8,6 +8,7 @@ class Register(QMainWindow):
         uic.loadUi("Register.ui",self)
         self.Bt_normal.hide()
         self.click_posicion = None
+        self.Registrar.clicked.connect(self.Gui_Log)
         self.Bt_min.clicked.connect(self.showMinimized)
         self.Bt_normal.clicked.connect(self.control_bt_normal)
         self.Bt_max.clicked.connect(self.control_bt_maximize)
@@ -22,6 +23,12 @@ class Register(QMainWindow):
         self.gripSize = 10
         self.grip = QtWidgets.QSizeGrip(self)
         self.grip.resize(self.gripSize, self.gripSize)
+    
+    def Gui_Log(self):
+        from UI.Login import Loginw
+        self.hide()
+        self.LogWindonw=Loginw() #Creamos una instacia de Login
+        self.LogWindonw.show() # Mostramos a Login
 
     def control_bt_normal(self):
         self.showNormal()
