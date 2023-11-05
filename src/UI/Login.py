@@ -64,8 +64,3 @@ class Loginw(QMainWindow):
             self.Bt_normal.hide()
             self.Bt_max.show()
   
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    my_app = Loginw()
-    my_app.show()
-    sys.exit(app.exec_())
