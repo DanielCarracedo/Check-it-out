@@ -2,7 +2,12 @@
   <qresource prefix="BackGraund">
     <file>BackGraund.png</file>
   </qresource>
+  <qresource prefix="Botones">
+    <file>User-removebg-preview.png</file>
+    <file>Menu__2_-removebg-preview.png</file>
+  </qresource>
   <qresource prefix="Check it out">
+    <file>Check_it_out__1_-removebg-preview.png</file>
     <file>Check_it_out-removebg-preview.png</file>
   </qresource>
 </RCC>
