@@ -1,7 +1,10 @@
 import pyodbc
 import configparser
+import hashlib
 from User import User
 from Task import Task
+
+h = hashlib.new("SHA256")
 
 config = configparser.ConfigParser()
 config.read(r'src\Modelo\config.ini')
@@ -19,12 +22,23 @@ connection_string = (
 )
 
 
+def username_hash(username):
+    h.update(username.encode())
+    return h.hexdigest()
+
+
+def psw_hash(psw):
+    h.update(psw.encode())
+    return h.hexdigest()
+
+
 class Chekitout():
     def __init__(self) -> None:
         pass
 
-    # Recibe los datos encriptados
     def register_user(self, name: str, lastname: str, username: str, psw: str) -> bool:
+        username = username_hash(username)
+        psw = psw_hash(psw)
         with pyodbc.connect(connection_string) as conn:
             cursor = conn.cursor()
             cursor.execute("SELECT MAX(uid) FROM Users")
@@ -38,8 +52,9 @@ class Chekitout():
                            uid, name, lastname, username, psw)
         return True
 
-    # Recibe los datos encriptados
     def check_user(self, username: str, psw: str) -> bool:
+        username = username_hash(username)
+        psw = psw_hash(psw)
         with pyodbc.connect(connection_string) as conn:
             cursor = conn.cursor()
             cursor.execute(
