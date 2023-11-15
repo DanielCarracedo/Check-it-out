@@ -1,7 +1,7 @@
 import pyodbc
 import datetime as dt
 import configparser
-from Task import Task
+
 
 config = configparser.ConfigParser()
 config.read(r'src\Modelo\config.ini')
@@ -32,6 +32,7 @@ class User():
         return self.__tasks
 
     def create_task(self, categoria: str, fecha_in: dt, fecha_fin: dt, desc: str) -> bool:
+        from Task import Task
         with pyodbc.connect(connection_string) as conn:
             cursor = conn.cursor()
             cursor.execute("SELECT MAX(ownid) FROM Tasks")

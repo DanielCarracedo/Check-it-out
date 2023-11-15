@@ -1,10 +1,6 @@
 import pyodbc
 import configparser
 import hashlib
-from User import User
-from Task import Task
-
-h = hashlib.new("SHA256")
 
 config = configparser.ConfigParser()
 config.read(r'src\Modelo\config.ini')
@@ -22,13 +18,9 @@ connection_string = (
 )
 
 
-def username_hash(username):
-    h.update(username.encode())
-    return h.hexdigest()
-
-
-def psw_hash(psw):
-    h.update(psw.encode())
+def return_hash(text):
+    h = hashlib.new("SHA256")
+    h.update(text.encode())
     return h.hexdigest()
 
 
@@ -37,8 +29,8 @@ class Chekitout():
         pass
 
     def register_user(self, name: str, lastname: str, username: str, psw: str) -> bool:
-        username = username_hash(username)
-        psw = psw_hash(psw)
+        username = return_hash(username)
+        psw = return_hash(psw)
         with pyodbc.connect(connection_string) as conn:
             cursor = conn.cursor()
             cursor.execute("SELECT MAX(uid) FROM Users")
@@ -53,8 +45,8 @@ class Chekitout():
         return True
 
     def check_user(self, username: str, psw: str) -> bool:
-        username = username_hash(username)
-        psw = psw_hash(psw)
+        username = return_hash(username)
+        psw = return_hash(psw)
         with pyodbc.connect(connection_string) as conn:
             cursor = conn.cursor()
             cursor.execute(
@@ -65,6 +57,9 @@ class Chekitout():
 
     # Ejecutar este metodo SOLO si check_user devuelve true
     def create_session(self, username: str) -> "User()":
+        from User import User
+        from Task import Task
+        username = return_hash(username)
         with pyodbc.connect(connection_string) as conn:
             cursor = conn.cursor()
             cursor.execute("SELECT * FROM Users WHERE username=?", username)

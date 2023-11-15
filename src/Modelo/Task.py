@@ -10,5 +10,8 @@ class Task():
         self.__fecha_fin = fecha_fin
         self.__desc = desc
 
+    def __repr__(self) -> str:
+        return f"Categoria: {self.__categoria}, Descripcion: {self.__desc}"
+
     def get_ownid(self):
         return self.__ownid
