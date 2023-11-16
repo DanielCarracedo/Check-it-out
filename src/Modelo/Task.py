@@ -40,6 +40,14 @@ class Task():
             conn.commit()
         self.__finished = True
 
+    def set_uncompleted(self) -> None:
+        with pyodbc.connect(connection_string) as conn:
+            cursor = conn.cursor()
+            cursor.execute('UPDATE Tasks SET terminado=? WHERE ownid=?',
+                           False, self.__ownid)
+            conn.commit()
+        self.__finished = False
+
     def edit_task(self, categoria: str, fecha_in: dt, fecha_fin: dt, desc: str):
         with pyodbc.connect(connection_string) as conn:
             cursor = conn.cursor()
