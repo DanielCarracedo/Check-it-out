@@ -1,7 +1,7 @@
 import pyodbc
 import datetime as dt
 import configparser
-
+from typing import List
 
 config = configparser.ConfigParser()
 config.read(r'src\Modelo\config.ini')
@@ -20,16 +20,28 @@ connection_string = (
 
 
 class User():
-    def __init__(self, uid: int, name: str, lastname: str, username: str, psw: str) -> None:
+    def __init__(self, uid: int, name: str, lastname: str, username: str, psw: str, priority: int = 2) -> None:
         self.__id = uid
         self.__name = name
         self.__lastname = lastname
         self.__username = username
         self.__psw = psw
         self.__tasks = []
+        self.__priority = priority
 
-    def get_tasks(self):
+    def get_tasks(self) -> List["Tasks"]:
         return self.__tasks
+
+    def get_priority(self) -> int:
+        return self.__priority
+
+    def set_priority(self, priority) -> None:
+        with pyodbc.connect(connection_string) as conn:
+            cursor = conn.cursor()
+            cursor.execute('UPDATE Users SET priority=? WHERE uid=?',
+                           priority, self.__id)
+            conn.commit()
+        self.__priority = priority
 
     def create_task(self, categoria: str, fecha_in: dt, fecha_fin: dt, desc: str) -> bool:
         from Task import Task
@@ -47,8 +59,8 @@ class User():
         self.__tasks.append(tarea)
         with pyodbc.connect(connection_string) as conn:
             cursor = conn.cursor()
-            cursor.execute('INSERT INTO Tasks (uid, ownid, categoria, fecha_in, fecha_fin, "desc") VALUES (?, ?, ?, ?, ?, ?)',
-                           self.__id, ownid, categoria, fecha_in, fecha_fin, desc)
+            cursor.execute('INSERT INTO Tasks (uid, ownid, categoria, fecha_in, fecha_fin, "desc", terminado) VALUES (?, ?, ?, ?, ?, ?, ?)',
+                           self.__id, ownid, categoria, fecha_in, fecha_fin, desc, False)
         return True
 
     def delete_task(self, id: int) -> bool:
@@ -59,10 +71,3 @@ class User():
         for task in self.__tasks:
             if id == task.get_ownid():
                 self.__tasks.remove(task)
-
-    def edit_task(self, ownid: int, categoria: str, fecha_in: dt, fecha_fin: dt, desc: str):
-        with pyodbc.connect(connection_string) as conn:
-            cursor = conn.cursor()
-            cursor.execute('UPDATE Tasks SET categoria=?, fecha_in=?, fecha_fin=?, "desc"=? WHERE ownid=?',
-                           categoria, fecha_in, fecha_fin, desc, ownid)
-            conn.commit()

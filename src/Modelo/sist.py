@@ -1,6 +1,7 @@
 import pyodbc
 import configparser
 import hashlib
+from datetime import datetime
 
 config = configparser.ConfigParser()
 config.read(r'src\Modelo\config.ini')
@@ -40,8 +41,8 @@ class Chekitout():
             else:
                 uid += 1
 
-            cursor.execute("INSERT INTO Users (uid, name, lastname, username, psw) VALUES (?, ?, ?, ?, ?)",
-                           uid, name, lastname, username, psw)
+            cursor.execute("INSERT INTO Users (uid, name, lastname, username, psw, priority) VALUES (?, ?, ?, ?, ?, ?)",
+                           uid, name, lastname, username, psw, 2)
         return True
 
     def check_user(self, username: str, psw: str) -> bool:
@@ -69,8 +70,8 @@ class Chekitout():
             tasks = cursor.fetchall()
 
         session = User(resultado.uid, resultado.name,
-                       resultado.lastname, resultado.username, resultado.psw)
+                       resultado.lastname, resultado.username, resultado.psw, resultado.priority)
         tareas = [Task(resultado.uid, task.ownid, task.categoria,
-                       task.fecha_in, task.fecha_fin, task.desc) for task in tasks]
+                       task.fecha_in, task.fecha_fin, task.desc, task.terminado) for task in tasks]
         session.get_tasks().extend(tareas)
         return session
