@@ -1,12 +1,17 @@
-from win10toast import ToastNotifier
+from plyer import notification
 from datetime import datetime, timedelta
 import time
 
 
-def notification(title, message):
-    toaster = ToastNotifier()
-    toaster.show_toast(title, message, duration=10,
-                       icon_path=r"src/Modelo/iconochekitout.ico")
+def notificacion(title, message):
+    notification.notify(
+        title=title,
+        message=message,
+        app_name="Checkitout",
+        # Puedes proporcionar la ruta a un icono personalizado
+        app_icon="src/Modelo/iconochekitout.ico",
+        timeout=10,  # Duración de la notificación en segundos
+    )
 
 
 def send_notification(user="User"):
@@ -29,27 +34,24 @@ def send_notification(user="User"):
 
         # Verificar notificaciones para tareas cercanas
         if tiempo_restante < timedelta(hours=1):
-            notification("Fecha Cercana",
+            notificacion("Fecha Cercana",
                          f"Te queda 1 hora para '{task.get_descripcion()}'")
         elif timedelta(hours=6) < tiempo_restante < timedelta(hours=12):
-            notification(
+            notificacion(
                 "Fecha Cercana", f"Te quedan menos de 12 horas para '{task.get_descripcion()}'")
 
     # Verificar si hay tareas pendientes para enviar notificación
     if cont > 0 and x == 1:
-        notification(
+        notificacion(
             "Tareas", f"Le queda 10% del tiempo para completar {cont} tareas")
         time.sleep(90 * 60)
 
     elif cont > 0 and x == 2:
-        notification(
+        notificacion(
             "Tareas", f"Le queda 25% del tiempo para completar {cont} tareas")
         time.sleep(60*60)
 
     elif cont > 0 and x == 3:
-        notification(
+        notificacion(
             "Tareas", f"Le queda la mitad del tiempo para completar {cont} tareas")
         time.sleep(60*60)
-
-
-notification("esto es un titulo", "y esto un super mensaje")
