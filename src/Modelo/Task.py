@@ -20,7 +20,8 @@ connection_string = (
 
 
 class Task():
-    def __init__(self, uid: int, ownid: int, categoria: str, fecha_in: dt, fecha_fin: dt, desc: str, finished: bool = False) -> None:
+    def __init__(self, uid: int, ownid: int, categoria: str, fecha_in: dt, 
+                fecha_fin: dt, desc: str, titulo: str, finished: bool = False) -> None:
         self.__id = uid
         self.__ownid = ownid
         self.__categoria = categoria
@@ -28,6 +29,7 @@ class Task():
         self.__fecha_fin = fecha_fin
         self.__desc = desc
         self.__finished = finished
+        self.__titulo = titulo
 
     def __repr__(self) -> str:
         return f"Categoria: {self.__categoria}, Descripcion: {self.__desc}"
@@ -56,17 +58,18 @@ class Task():
         except pyodbc.Error:
             return False
 
-    def edit_task(self, categoria: str, fecha_in: dt, fecha_fin: dt, desc: str) -> bool:
+    def edit_task(self, categoria: str, fecha_in: dt, fecha_fin: dt, desc: str, titulo: str) -> bool:
         try:
             with pyodbc.connect(connection_string) as conn:
                 cursor = conn.cursor()
-                cursor.execute('UPDATE Tasks SET categoria=?, fecha_in=?, fecha_fin=?, "desc"=? WHERE ownid=?',
-                           categoria, fecha_in, fecha_fin, desc, self.get_ownid())
+                cursor.execute('UPDATE Tasks SET categoria=?, fecha_in=?, fecha_fin=?, "desc"=?, titulo=? WHERE ownid=?',
+                           categoria, fecha_in, fecha_fin, desc, titulo, self.get_ownid())
                 conn.commit()
             self.__categoria = categoria
             self.__desc = desc
             self.__fecha_fin = fecha_fin
             self.__fecha_in = fecha_in
+            self.__titulo = titulo
             return True
         except pyodbc.Error:
             return False
@@ -85,3 +88,6 @@ class Task():
 
     def get_desc(self) -> dt:
         return self.__desc
+
+    def get_titulo(self) -> dt:
+        return self.__titulo

@@ -20,21 +20,47 @@ connection_string = (
 
 
 class User():
-    def __init__(self, uid: int, name: str, lastname: str, username: str, psw: str, priority: int = 2) -> None:
+    def __init__(self, uid: int, name: str, lastname: str, username: str, psw: str, 
+                priority: int = 2, modo_oscuro: bool = False) -> None:
         self.__id = uid
         self.__name = name
         self.__lastname = lastname
         self.__username = username
         self.__psw = psw
         self.__tasks = []
-        self.__priority = priority
+        self.__priority = priority #valores entre 0 y 3
+        self.__modo_oscuro = modo_oscuro
 
     def get_tasks(self) -> List["Tasks"]:
         return self.__tasks
 
     def get_priority(self) -> int:
         return self.__priority
-
+    
+    def set_oscurodb(self) -> bool:
+        try: 
+            with pyodbc.connect(connection_string) as conn:
+                cursor = conn.cursor()
+                cursor.execute('UPDATE Users SET modo_oscuro=? WHERE uid=?',
+                           True, self.__id)
+                conn.commit()
+            self.__modo_oscuro = True
+            return True
+        except pyodbc.Error:
+            return False
+        
+    def set_clarodb(self) -> bool:
+        try: 
+            with pyodbc.connect(connection_string) as conn:
+                cursor = conn.cursor()
+                cursor.execute('UPDATE Users SET modo_oscuro=? WHERE uid=?',
+                           False, self.__id)
+                conn.commit()
+            self.__modo_oscuro = False
+            return True
+        except pyodbc.Error:
+            return False
+        
     def set_priority(self, priority) -> bool:
         try:
             with pyodbc.connect(connection_string) as conn:
@@ -47,7 +73,7 @@ class User():
         except pyodbc.Error:
             return False
 
-    def create_task(self, categoria: str, fecha_in: dt, fecha_fin: dt, desc: str) -> bool:
+    def create_task(self, categoria: str, fecha_in: dt, fecha_fin: dt, desc: str, titulo: str) -> bool:
         try:
             from Task import Task
             with pyodbc.connect(connection_string) as conn:
@@ -60,12 +86,12 @@ class User():
             else:
                 ownid += 1
 
-            tarea = Task(self.__id, ownid, categoria, fecha_in, fecha_fin, desc)
+            tarea = Task(self.__id, ownid, categoria, fecha_in, fecha_fin, desc, titulo)
             self.__tasks.append(tarea)
             with pyodbc.connect(connection_string) as conn:
                 cursor = conn.cursor()
-                cursor.execute('INSERT INTO Tasks (uid, ownid, categoria, fecha_in, fecha_fin, "desc", terminado) VALUES (?, ?, ?, ?, ?, ?, ?)',
-                           self.__id, ownid, categoria, fecha_in, fecha_fin, desc, False)
+                cursor.execute('INSERT INTO Tasks (uid, ownid, categoria, fecha_in, fecha_fin, "desc", terminado, titulo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+                           self.__id, ownid, categoria, fecha_in, fecha_fin, desc, False, titulo)
             return True
         except pyodbc.Error:
             return False
