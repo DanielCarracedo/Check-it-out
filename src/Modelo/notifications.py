@@ -19,12 +19,12 @@ def proximity_notification(user="User"):
         for task in user.get_tasks():
             f2 = task.get_fecha_fin()
             tiempo_restante = f2 - datetime.now()
-
+            completed = task.get_finished()
             # Verificar notificaciones para tareas cercanas
-            if tiempo_restante < timedelta(hours=1):
+            if tiempo_restante < timedelta(hours=1) and completed == False:
                 notificacion("Fecha Cercana",
                              f"Te queda menos de 1 hora para '{task.get_descripcion()}'")
-            elif timedelta(hours=4) < tiempo_restante < timedelta(hours=12):
+            elif timedelta(hours=4) < tiempo_restante < timedelta(hours=12) and completed == False:
                 notificacion(
                     "Fecha Cercana", f"Te quedan menos de 12 horas para '{task.get_descripcion()}'")
         time.sleep(60 * 60)
@@ -40,13 +40,13 @@ def send_notification(user="User"):
             f2 = task.get_fecha_fin()
             diferencia = f2 - f1
             tiempo_restante = f2 - datetime.now()
-
+            completed = task.get_finished()
             # Verificar tiempo restante y prioridad
-            if x == 1 and tiempo_restante < (diferencia * 0.1):
+            if x == 1 and tiempo_restante < (diferencia * 0.1) and completed == False:
                 cont += 1
-            elif x == 2 and tiempo_restante < (diferencia * 0.25):
+            elif x == 2 and tiempo_restante < (diferencia * 0.25) and completed == False:
                 cont += 1
-            elif x == 3 and tiempo_restante < (diferencia * 0.5):
+            elif x == 3 and tiempo_restante < (diferencia * 0.5) and completed == False:
                 cont += 1
 
         # Verificar si hay tareas pendientes para enviar notificación

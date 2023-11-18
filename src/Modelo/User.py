@@ -35,39 +35,50 @@ class User():
     def get_priority(self) -> int:
         return self.__priority
 
-    def set_priority(self, priority) -> None:
-        with pyodbc.connect(connection_string) as conn:
-            cursor = conn.cursor()
-            cursor.execute('UPDATE Users SET priority=? WHERE uid=?',
+    def set_priority(self, priority) -> bool:
+        try:
+            with pyodbc.connect(connection_string) as conn:
+                cursor = conn.cursor()
+                cursor.execute('UPDATE Users SET priority=? WHERE uid=?',
                            priority, self.__id)
-            conn.commit()
-        self.__priority = priority
+                conn.commit()
+            self.__priority = priority
+            return True
+        except pyodbc.Error:
+            return False
 
     def create_task(self, categoria: str, fecha_in: dt, fecha_fin: dt, desc: str) -> bool:
-        from Task import Task
-        with pyodbc.connect(connection_string) as conn:
-            cursor = conn.cursor()
-            cursor.execute("SELECT MAX(ownid) FROM Tasks")
-            ownid = cursor.fetchone()[0]
+        try:
+            from Task import Task
+            with pyodbc.connect(connection_string) as conn:
+                cursor = conn.cursor()
+                cursor.execute("SELECT MAX(ownid) FROM Tasks")
+                ownid = cursor.fetchone()[0]
 
-        if ownid == None:
-            ownid = 0
-        else:
-            ownid += 1
+            if ownid == None:
+                ownid = 0
+            else:
+                ownid += 1
 
-        tarea = Task(self.__id, ownid, categoria, fecha_in, fecha_fin, desc)
-        self.__tasks.append(tarea)
-        with pyodbc.connect(connection_string) as conn:
-            cursor = conn.cursor()
-            cursor.execute('INSERT INTO Tasks (uid, ownid, categoria, fecha_in, fecha_fin, "desc", terminado) VALUES (?, ?, ?, ?, ?, ?, ?)',
+            tarea = Task(self.__id, ownid, categoria, fecha_in, fecha_fin, desc)
+            self.__tasks.append(tarea)
+            with pyodbc.connect(connection_string) as conn:
+                cursor = conn.cursor()
+                cursor.execute('INSERT INTO Tasks (uid, ownid, categoria, fecha_in, fecha_fin, "desc", terminado) VALUES (?, ?, ?, ?, ?, ?, ?)',
                            self.__id, ownid, categoria, fecha_in, fecha_fin, desc, False)
-        return True
+            return True
+        except pyodbc.Error:
+            return False
 
     def delete_task(self, id: int) -> bool:
-        with pyodbc.connect(connection_string) as conn:
-            cursor = conn.cursor()
-            cursor.execute("DELETE FROM Tasks WHERE ownid=?", id)
-            conn.commit()
-        for task in self.__tasks:
-            if id == task.get_ownid():
-                self.__tasks.remove(task)
+        try:
+            with pyodbc.connect(connection_string) as conn:
+                cursor = conn.cursor()
+                cursor.execute("DELETE FROM Tasks WHERE ownid=?", id)
+                conn.commit()
+            for task in self.__tasks:
+                if id == task.get_ownid():
+                    self.__tasks.remove(task)
+            return True
+        except pyodbc.Error:
+            return False

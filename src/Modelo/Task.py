@@ -32,36 +32,51 @@ class Task():
     def __repr__(self) -> str:
         return f"Categoria: {self.__categoria}, Descripcion: {self.__desc}"
 
-    def set_completed(self) -> None:
-        with pyodbc.connect(connection_string) as conn:
-            cursor = conn.cursor()
-            cursor.execute('UPDATE Tasks SET terminado=? WHERE ownid=?',
+    def set_completed(self) -> bool:
+        try:
+            with pyodbc.connect(connection_string) as conn:
+                cursor = conn.cursor()
+                cursor.execute('UPDATE Tasks SET terminado=? WHERE ownid=?',
                            True, self.__ownid)
-            conn.commit()
-        self.__finished = True
+                conn.commit()
+            self.__finished = True
+            return True
+        except pyodbc.Error:
+            return False
 
-    def set_uncompleted(self) -> None:
-        with pyodbc.connect(connection_string) as conn:
-            cursor = conn.cursor()
-            cursor.execute('UPDATE Tasks SET terminado=? WHERE ownid=?',
+    def set_uncompleted(self) -> bool:
+        try: 
+            with pyodbc.connect(connection_string) as conn:
+                cursor = conn.cursor()
+                cursor.execute('UPDATE Tasks SET terminado=? WHERE ownid=?',
                            False, self.__ownid)
-            conn.commit()
-        self.__finished = False
+                conn.commit()
+            self.__finished = False
+            return True
+        except pyodbc.Error:
+            return False
 
-    def edit_task(self, categoria: str, fecha_in: dt, fecha_fin: dt, desc: str):
-        with pyodbc.connect(connection_string) as conn:
-            cursor = conn.cursor()
-            cursor.execute('UPDATE Tasks SET categoria=?, fecha_in=?, fecha_fin=?, "desc"=? WHERE ownid=?',
+    def edit_task(self, categoria: str, fecha_in: dt, fecha_fin: dt, desc: str) -> bool:
+        try:
+            with pyodbc.connect(connection_string) as conn:
+                cursor = conn.cursor()
+                cursor.execute('UPDATE Tasks SET categoria=?, fecha_in=?, fecha_fin=?, "desc"=? WHERE ownid=?',
                            categoria, fecha_in, fecha_fin, desc, self.get_ownid())
-            conn.commit()
-        self.__categoria = categoria
-        self.__desc = desc
-        self.__fecha_fin = fecha_fin
-        self.__fecha_in = fecha_in
+                conn.commit()
+            self.__categoria = categoria
+            self.__desc = desc
+            self.__fecha_fin = fecha_fin
+            self.__fecha_in = fecha_in
+            return True
+        except pyodbc.Error:
+            return False
 
     def get_ownid(self) -> int:
         return self.__ownid
-
+    
+    def get_finished(self) -> int:
+        return self.__finished
+    
     def get_fecha_in(self) -> dt:
         return self.__fecha_in
 
