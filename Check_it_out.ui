@@ -13,6 +13,64 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QScrollBar:vertical{
+border:none;
+background-color: rgb(212, 212, 212);
+width: 15px;
+ margin: 15px 0 15px 0;
+border-radius:0px;
+}
+
+QScrollBar::handle:vertical{
+background-color: rgb(191, 191, 191);
+min-height: 30px;
+border-radius: 7px;
+}
+
+QScrollBar::handle:vertical:hover{
+background-color: rgb(124, 124, 124);
+}
+
+QScrollBar::handle:vertical:pressed{
+background-color: rgb(90, 90, 90);
+}
+
+QScrollBar::sub-line:vertical {
+border: none;
+background-color: rgb(59, 59, 90);
+height: 15px;
+border-top-left-radius: 7px; border-top-right-radius: 7px;
+subcontrol-position: top;
+subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:vertical:hover {
+background-color:rgb(124, 124, 124);
+}
+
+QScrollBar::sub-line:vertical:pressed {
+background-color:rgb(90, 90, 90);
+}
+
+QScrollBar::add-line:vertical {
+border: none;
+background-color: rgb(59, 59, 90);
+height: 15px;
+border-bottom-left-radius: 7px;
+ border-bottom-right-radius: 7px;
+subcontrol-position: bottom;
+subcontrol-origin: margin;
+}
+
+QScrollBar::add-line:vertical:hover {
+background-color:rgb(124, 124, 124);
+}
+
+QScrollBar::add-line:vertical:pressed {
+background-color:rgb(90, 90, 90);
+}</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
     <string notr="true">background-color: rgb(253, 253, 253);</string>
@@ -57,20 +115,31 @@
           <layout class="QHBoxLayout" name="horizontalLayout_4">
            <item>
             <widget class="QPushButton" name="Home">
+             <property name="font">
+              <font>
+               <family>Lucida Calligraphy</family>
+               <pointsize>14</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
              <property name="cursor">
               <cursorShape>PointingHandCursor</cursorShape>
              </property>
              <property name="styleSheet">
               <string notr="true">QPushButton{
 background-color: rgb(0, 0, 0, 0);
-}</string>
+color: rgb(113, 113, 113);
+}
+
+</string>
              </property>
              <property name="text">
-              <string/>
+              <string>Check It Out</string>
              </property>
              <property name="icon">
               <iconset resource="src/Imagenes_UI/back.qrc">
-               <normaloff>:/Check it out/Check_it_out__1_-removebg-preview.png</normaloff>:/Check it out/Check_it_out__1_-removebg-preview.png</iconset>
+               <normaloff>:/Check it out/Check_it_out-removebg-preview.png</normaloff>:/Check it out/Check_it_out-removebg-preview.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -100,6 +169,18 @@ background-color: rgb(0, 0, 0, 0);
                <width>165</width>
                <height>16777215</height>
               </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgba(0, 0,  0, 0);
+border: none;
+border-bottom: 2px solid rgba(105, 118, 132, 255);
+</string>
+             </property>
+             <property name="placeholderText">
+              <string>Buscar</string>
+             </property>
+             <property name="clearButtonEnabled">
+              <bool>false</bool>
              </property>
             </widget>
            </item>
@@ -146,12 +227,154 @@ background-color: rgb(0, 0, 0, 0);
             <height>0</height>
            </size>
           </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+background-color: rgb(0, 0, 0, 0);
+color: rgb(45, 45, 45);
+}
+
+QPushButton:hover{
+border-radius:10px;
+color: rgb(52, 143, 255);
+border: None;
+background-color: None;
+}
+</string>
+          </property>
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
           <property name="frameShadow">
            <enum>QFrame::Raised</enum>
           </property>
+          <layout class="QVBoxLayout" name="verticalLayout_4">
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_2">
+             <item>
+              <widget class="QPushButton" name="pushButton">
+               <property name="text">
+                <string>Nueva tarea</string>
+               </property>
+               <property name="icon">
+                <iconset resource="src/Imagenes_UI/back.qrc">
+                 <normaloff>:/Botones/Nueva_Tarea-removebg-preview.png</normaloff>:/Botones/Nueva_Tarea-removebg-preview.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>35</width>
+                 <height>35</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="Inicio">
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string>         Home</string>
+               </property>
+               <property name="icon">
+                <iconset resource="src/Imagenes_UI/back.qrc">
+                 <normaloff>:/Botones/Home-removebg-preview.png</normaloff>:/Botones/Home-removebg-preview.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>30</width>
+                 <height>30</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="Calendario">
+               <property name="text">
+                <string>Calendario</string>
+               </property>
+               <property name="icon">
+                <iconset resource="src/Imagenes_UI/back.qrc">
+                 <normaloff>:/Botones/Calendario-removebg-preview.png</normaloff>:/Botones/Calendario-removebg-preview.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>35</width>
+                 <height>35</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="TareasPen">
+               <property name="text">
+                <string>Pendientes</string>
+               </property>
+               <property name="icon">
+                <iconset resource="src/Imagenes_UI/back.qrc">
+                 <normaloff>:/Botones/Pendientes__1_-removebg-preview.png</normaloff>:/Botones/Pendientes__1_-removebg-preview.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>35</width>
+                 <height>35</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <spacer name="verticalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>185</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+             <item>
+              <widget class="QPushButton" name="Settings">
+               <property name="text">
+                <string>Settings</string>
+               </property>
+               <property name="icon">
+                <iconset resource="src/Imagenes_UI/back.qrc">
+                 <normaloff>:/Botones/Settings-removebg-preview.png</normaloff>:/Botones/Settings-removebg-preview.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>30</width>
+                 <height>30</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="LogOut">
+               <property name="text">
+                <string>Log Out</string>
+               </property>
+               <property name="icon">
+                <iconset resource="src/Imagenes_UI/back.qrc">
+                 <normaloff>:/Botones/LogOut-removebg-preview.png</normaloff>:/Botones/LogOut-removebg-preview.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>35</width>
+                 <height>35</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
          </widget>
         </item>
         <item>
@@ -173,7 +396,7 @@ background-color: rgb(0, 0, 0, 0);
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>609</width>
+             <width>611</width>
              <height>1200</height>
             </rect>
            </property>
@@ -216,6 +439,205 @@ background-color: rgb(0, 0, 0, 0);
               <property name="frameShadow">
                <enum>QFrame::Raised</enum>
               </property>
+              <layout class="QHBoxLayout" name="horizontalLayout_6">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QStackedWidget" name="stackedWidget">
+                 <property name="currentIndex">
+                  <number>0</number>
+                 </property>
+                 <widget class="QWidget" name="Principal">
+                  <layout class="QHBoxLayout" name="horizontalLayout_8">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <widget class="QFrame" name="frame_5">
+                     <property name="frameShape">
+                      <enum>QFrame::StyledPanel</enum>
+                     </property>
+                     <property name="frameShadow">
+                      <enum>QFrame::Raised</enum>
+                     </property>
+                     <layout class="QVBoxLayout" name="verticalLayout_6">
+                      <item>
+                       <spacer name="verticalSpacer_6">
+                        <property name="orientation">
+                         <enum>Qt::Vertical</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>20</width>
+                          <height>52</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <layout class="QVBoxLayout" name="verticalLayout_5">
+                        <property name="spacing">
+                         <number>0</number>
+                        </property>
+                        <item>
+                         <widget class="QLabel" name="label">
+                          <property name="font">
+                           <font>
+                            <family>Lucida Calligraphy</family>
+                            <pointsize>20</pointsize>
+                            <weight>50</weight>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="layoutDirection">
+                           <enum>Qt::LeftToRight</enum>
+                          </property>
+                          <property name="text">
+                           <string>Tareas</string>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <spacer name="verticalSpacer_5">
+                          <property name="orientation">
+                           <enum>Qt::Vertical</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>20</width>
+                            <height>40</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                        <item>
+                         <widget class="QTableWidget" name="tableWidget">
+                          <property name="minimumSize">
+                           <size>
+                            <width>0</width>
+                            <height>700</height>
+                           </size>
+                          </property>
+                          <property name="sizeIncrement">
+                           <size>
+                            <width>10000</width>
+                            <height>10000</height>
+                           </size>
+                          </property>
+                          <column>
+                           <property name="text">
+                            <string>Tarea</string>
+                           </property>
+                          </column>
+                          <column>
+                           <property name="text">
+                            <string>Tipo</string>
+                           </property>
+                          </column>
+                          <column>
+                           <property name="text">
+                            <string>Fecha Inicio</string>
+                           </property>
+                          </column>
+                          <column>
+                           <property name="text">
+                            <string>Descripcion</string>
+                           </property>
+                          </column>
+                          <column>
+                           <property name="text">
+                            <string>Fecha Final</string>
+                           </property>
+                          </column>
+                          <column>
+                           <property name="text">
+                            <string>Estado</string>
+                           </property>
+                          </column>
+                         </widget>
+                        </item>
+                       </layout>
+                      </item>
+                      <item>
+                       <spacer name="verticalSpacer_7">
+                        <property name="orientation">
+                         <enum>Qt::Vertical</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>20</width>
+                          <height>360</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                 <widget class="QWidget" name="Calendario_2"/>
+                 <widget class="QWidget" name="Pendientes">
+                  <layout class="QHBoxLayout" name="horizontalLayout_7">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <widget class="QFrame" name="frame_4">
+                     <property name="frameShape">
+                      <enum>QFrame::StyledPanel</enum>
+                     </property>
+                     <property name="frameShadow">
+                      <enum>QFrame::Raised</enum>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                 <widget class="QWidget" name="SettingsPage"/>
+                </widget>
+               </item>
+              </layout>
              </widget>
             </item>
            </layout>

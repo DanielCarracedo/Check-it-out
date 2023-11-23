@@ -3,8 +3,13 @@
     <file>BackGraund.png</file>
   </qresource>
   <qresource prefix="Botones">
+    <file>Nueva_Tarea-removebg-preview.png</file>
+    <file>Pendientes__1_-removebg-preview.png</file>
+    <file>Settings-removebg-preview.png</file>
+    <file>LogOut-removebg-preview.png</file>
+    <file>Calendario-removebg-preview.png</file>
+    <file>Home-removebg-preview.png</file>
     <file>User-removebg-preview.png</file>
-    <file>Menu__2_-removebg-preview.png</file>
   </qresource>
   <qresource prefix="Check it out">
     <file>Check_it_out__1_-removebg-preview.png</file>
