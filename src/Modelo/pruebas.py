@@ -68,25 +68,6 @@ def empty_tables():
         except pyodbc.Error as e:
             print(f"Error al vaciar las tablas: {e}")
 
-prueba = Chekitout()
 
-x1 = prueba.register_user("pedro", "sanchez", "pedrito09", "pedritokul123")
-if x1 == True:
-    x = prueba.check_user("pedrito09", "pedritokul123")
-    fecha_in = datetime.now()
-    fecha_fin = datetime(2015, 3, 24)
-    if x == True:
-        user = prueba.create_session("pedrito09")
-        user.set_priority(0)
-        user.create_task("gym", fecha_in, fecha_fin, "descripcion bien perrona", "Sacar al perro")
-        user.create_task("tarea eliminable", fecha_in, fecha_fin, "me voy eliminado", "ahhhhhhhh")
-        user.delete_task(1)
-        user.set_oscurodb()
-        for task in user.get_tasks():
-            if task.get_ownid() == 0:
-                task.edit_task("gym", fecha_in, fecha_fin, "descripcion bien perrona", "Sacar al perrito")
-                task.set_completed
-else:
-    print("ombe este man ya existe")
 
 print_users_and_tasks()

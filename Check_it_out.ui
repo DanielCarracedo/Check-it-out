@@ -89,6 +89,11 @@ background-color:rgb(90, 90, 90);
           <height>60</height>
          </size>
         </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+border:none;
+}</string>
+        </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
         </property>
@@ -127,19 +132,14 @@ background-color:rgb(90, 90, 90);
               <cursorShape>PointingHandCursor</cursorShape>
              </property>
              <property name="styleSheet">
-              <string notr="true">QPushButton{
-background-color: rgb(0, 0, 0, 0);
-color: rgb(113, 113, 113);
-}
-
-</string>
+              <string notr="true"/>
              </property>
              <property name="text">
               <string>Check It Out</string>
              </property>
              <property name="icon">
-              <iconset resource="src/Imagenes_UI/back.qrc">
-               <normaloff>:/Check it out/Check_it_out-removebg-preview.png</normaloff>:/Check it out/Check_it_out-removebg-preview.png</iconset>
+              <iconset>
+               <normaloff>src/Imagenes_UI/Check_it_out-removebg-preview.png</normaloff>src/Imagenes_UI/Check_it_out-removebg-preview.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -190,16 +190,14 @@ border-bottom: 2px solid rgba(105, 118, 132, 255);
               <cursorShape>PointingHandCursor</cursorShape>
              </property>
              <property name="styleSheet">
-              <string notr="true">QPushButton{
-background-color: rgb(0, 0, 0, 0);
-}</string>
+              <string notr="true"/>
              </property>
              <property name="text">
               <string/>
              </property>
              <property name="icon">
-              <iconset resource="src/Imagenes_UI/back.qrc">
-               <normaloff>:/Botones/User-removebg-preview.png</normaloff>:/Botones/User-removebg-preview.png</iconset>
+              <iconset>
+               <normaloff>src/Imagenes_UI/User-removebg-preview.png</normaloff>src/Imagenes_UI/User-removebg-preview.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -229,17 +227,8 @@ background-color: rgb(0, 0, 0, 0);
           </property>
           <property name="styleSheet">
            <string notr="true">QPushButton{
-background-color: rgb(0, 0, 0, 0);
-color: rgb(45, 45, 45);
-}
-
-QPushButton:hover{
-border-radius:10px;
-color: rgb(52, 143, 255);
-border: None;
-background-color: None;
-}
-</string>
+border:none;
+}</string>
           </property>
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
@@ -250,14 +239,28 @@ background-color: None;
           <layout class="QVBoxLayout" name="verticalLayout_4">
            <item>
             <layout class="QVBoxLayout" name="verticalLayout_2">
+             <property name="spacing">
+              <number>0</number>
+             </property>
              <item>
               <widget class="QPushButton" name="pushButton">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton:hover{
+border-radius:10px;
+color: rgb(52, 143, 255);
+border: None;
+background-color: None;
+}</string>
+               </property>
                <property name="text">
                 <string>Nueva tarea</string>
                </property>
                <property name="icon">
-                <iconset resource="src/Imagenes_UI/back.qrc">
-                 <normaloff>:/Botones/Nueva_Tarea-removebg-preview.png</normaloff>:/Botones/Nueva_Tarea-removebg-preview.png</iconset>
+                <iconset>
+                 <normaloff>src/Imagenes_UI/Nueva_Tarea-removebg-preview.png</normaloff>src/Imagenes_UI/Nueva_Tarea-removebg-preview.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -268,16 +271,39 @@ background-color: None;
               </widget>
              </item>
              <item>
+              <spacer name="verticalSpacer_11">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>15</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
               <widget class="QPushButton" name="Inicio">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="styleSheet">
-                <string notr="true"/>
+                <string notr="true">
+QPushButton:hover{
+border-radius:10px;
+color: rgb(52, 143, 255);
+border: None;
+background-color: None;
+}
+</string>
                </property>
                <property name="text">
                 <string>         Home</string>
                </property>
                <property name="icon">
-                <iconset resource="src/Imagenes_UI/back.qrc">
-                 <normaloff>:/Botones/Home-removebg-preview.png</normaloff>:/Botones/Home-removebg-preview.png</iconset>
+                <iconset>
+                 <normaloff>src/Imagenes_UI/Home-removebg-preview.png</normaloff>src/Imagenes_UI/Home-removebg-preview.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -288,13 +314,38 @@ background-color: None;
               </widget>
              </item>
              <item>
+              <spacer name="verticalSpacer_12">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>15</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
               <widget class="QPushButton" name="Calendario">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">
+QPushButton:hover{
+border-radius:10px;
+color: rgb(52, 143, 255);
+border: None;
+background-color: None;
+}</string>
+               </property>
                <property name="text">
                 <string>Calendario</string>
                </property>
                <property name="icon">
-                <iconset resource="src/Imagenes_UI/back.qrc">
-                 <normaloff>:/Botones/Calendario-removebg-preview.png</normaloff>:/Botones/Calendario-removebg-preview.png</iconset>
+                <iconset>
+                 <normaloff>src/Imagenes_UI/Calendario-removebg-preview.png</normaloff>src/Imagenes_UI/Calendario-removebg-preview.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -305,13 +356,40 @@ background-color: None;
               </widget>
              </item>
              <item>
+              <spacer name="verticalSpacer_13">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>15</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
               <widget class="QPushButton" name="TareasPen">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButtom{
+background-color: rgb(0,0,0,0);
+}
+QPushButton:hover{
+border-radius:10px;
+color: rgb(52, 143, 255);
+border: None;
+background-color: None;
+}</string>
+               </property>
                <property name="text">
                 <string>Pendientes</string>
                </property>
                <property name="icon">
-                <iconset resource="src/Imagenes_UI/back.qrc">
-                 <normaloff>:/Botones/Pendientes__1_-removebg-preview.png</normaloff>:/Botones/Pendientes__1_-removebg-preview.png</iconset>
+                <iconset>
+                 <normaloff>src/Imagenes_UI/Pendientes__1_-removebg-preview.png</normaloff>src/Imagenes_UI/Pendientes__1_-removebg-preview.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -340,12 +418,24 @@ background-color: None;
             <layout class="QVBoxLayout" name="verticalLayout_3">
              <item>
               <widget class="QPushButton" name="Settings">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">
+QPushButton:hover{
+border-radius:10px;
+color: rgb(52, 143, 255);
+border: None;
+background-color: None;
+}</string>
+               </property>
                <property name="text">
                 <string>Settings</string>
                </property>
                <property name="icon">
-                <iconset resource="src/Imagenes_UI/back.qrc">
-                 <normaloff>:/Botones/Settings-removebg-preview.png</normaloff>:/Botones/Settings-removebg-preview.png</iconset>
+                <iconset>
+                 <normaloff>src/Imagenes_UI/Settings-removebg-preview.png</normaloff>src/Imagenes_UI/Settings-removebg-preview.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -357,12 +447,24 @@ background-color: None;
              </item>
              <item>
               <widget class="QPushButton" name="LogOut">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">
+QPushButton:hover{
+border-radius:10px;
+color: rgb(52, 143, 255);
+border: None;
+background-color: None;
+}</string>
+               </property>
                <property name="text">
                 <string>Log Out</string>
                </property>
                <property name="icon">
-                <iconset resource="src/Imagenes_UI/back.qrc">
-                 <normaloff>:/Botones/LogOut-removebg-preview.png</normaloff>:/Botones/LogOut-removebg-preview.png</iconset>
+                <iconset>
+                 <normaloff>src/Imagenes_UI/LogOut-removebg-preview.png</normaloff>src/Imagenes_UI/LogOut-removebg-preview.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -458,7 +560,7 @@ background-color: None;
                <item>
                 <widget class="QStackedWidget" name="stackedWidget">
                  <property name="currentIndex">
-                  <number>0</number>
+                  <number>2</number>
                  </property>
                  <widget class="QWidget" name="Principal">
                   <layout class="QHBoxLayout" name="horizontalLayout_8">
@@ -604,7 +706,114 @@ background-color: None;
                    </item>
                   </layout>
                  </widget>
-                 <widget class="QWidget" name="Calendario_2"/>
+                 <widget class="QWidget" name="Calendario_2">
+                  <layout class="QHBoxLayout" name="horizontalLayout_9">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <widget class="QFrame" name="frame_6">
+                     <property name="frameShape">
+                      <enum>QFrame::StyledPanel</enum>
+                     </property>
+                     <property name="frameShadow">
+                      <enum>QFrame::Raised</enum>
+                     </property>
+                     <layout class="QVBoxLayout" name="verticalLayout_8">
+                      <item>
+                       <spacer name="verticalSpacer">
+                        <property name="orientation">
+                         <enum>Qt::Vertical</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>20</width>
+                          <height>3</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <layout class="QVBoxLayout" name="verticalLayout_7">
+                        <item>
+                         <widget class="QLabel" name="label_2">
+                          <property name="font">
+                           <font>
+                            <family>Lucida Calligraphy</family>
+                            <pointsize>20</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>Calendario</string>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <spacer name="verticalSpacer_4">
+                          <property name="orientation">
+                           <enum>Qt::Vertical</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>20</width>
+                            <height>50</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                        <item>
+                         <widget class="QCalendarWidget" name="calendarWidget">
+                          <property name="minimumSize">
+                           <size>
+                            <width>0</width>
+                            <height>600</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>16777215</width>
+                            <height>10002</height>
+                           </size>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </item>
+                      <item>
+                       <spacer name="verticalSpacer_2">
+                        <property name="orientation">
+                         <enum>Qt::Vertical</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>20</width>
+                          <height>478</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
                  <widget class="QWidget" name="Pendientes">
                   <layout class="QHBoxLayout" name="horizontalLayout_7">
                    <property name="spacing">
@@ -630,11 +839,108 @@ background-color: None;
                      <property name="frameShadow">
                       <enum>QFrame::Raised</enum>
                      </property>
+                     <layout class="QVBoxLayout" name="verticalLayout_10">
+                      <item>
+                       <spacer name="verticalSpacer_8">
+                        <property name="orientation">
+                         <enum>Qt::Vertical</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>20</width>
+                          <height>51</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <layout class="QVBoxLayout" name="verticalLayout_9">
+                        <item>
+                         <widget class="QLabel" name="label_3">
+                          <property name="font">
+                           <font>
+                            <family>Lucida Calligraphy</family>
+                            <pointsize>20</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>Pendientes</string>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <spacer name="verticalSpacer_9">
+                          <property name="orientation">
+                           <enum>Qt::Vertical</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>20</width>
+                            <height>40</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                        <item>
+                         <widget class="QTableWidget" name="tableWidget_2">
+                          <property name="minimumSize">
+                           <size>
+                            <width>0</width>
+                            <height>700</height>
+                           </size>
+                          </property>
+                          <column>
+                           <property name="text">
+                            <string>Tarea</string>
+                           </property>
+                          </column>
+                          <column>
+                           <property name="text">
+                            <string>Tipo</string>
+                           </property>
+                          </column>
+                          <column>
+                           <property name="text">
+                            <string>Fecha de Inicio</string>
+                           </property>
+                          </column>
+                          <column>
+                           <property name="text">
+                            <string>Descripcion</string>
+                           </property>
+                          </column>
+                          <column>
+                           <property name="text">
+                            <string>Fecha Final</string>
+                           </property>
+                          </column>
+                         </widget>
+                        </item>
+                       </layout>
+                      </item>
+                      <item>
+                       <spacer name="verticalSpacer_10">
+                        <property name="orientation">
+                         <enum>Qt::Vertical</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>20</width>
+                          <height>319</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                     </layout>
                     </widget>
                    </item>
                   </layout>
                  </widget>
-                 <widget class="QWidget" name="SettingsPage"/>
                 </widget>
                </item>
               </layout>

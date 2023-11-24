@@ -68,7 +68,7 @@ class Chekitout():
         except pyodbc.Error:
             #Si retorna 1 y no un booleano entonces hubo un error en el servidor
             return 1
-    
+                
     def check_username(self, username: str) -> bool:
         try: 
             username = return_hash(username)
@@ -107,3 +107,5 @@ class Chekitout():
         
         except pyodbc.Error:
             return False
+
+return_hash("Hola")

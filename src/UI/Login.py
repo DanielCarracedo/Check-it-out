@@ -1,6 +1,9 @@
 from PyQt5.QtWidgets import QMainWindow, QApplication, QLineEdit
 from PyQt5 import QtCore, QtWidgets, uic
+from Controler import Controller
+from Modelo.sist import Chekitout
 import sys
+
 
 class Loginw(QMainWindow):
     def __init__(self):
@@ -13,6 +16,7 @@ class Loginw(QMainWindow):
         self.Bt_normal.clicked.connect(self.control_bt_normal)
         self.Bt_max.clicked.connect(self.control_bt_maximize)
         self.Bt_close.clicked.connect(self.close)
+        self.Enter.clicked.connect(self.Confirm)
 
         # Eliminar títulos y opacidad
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
@@ -29,8 +33,26 @@ class Loginw(QMainWindow):
         self.hide()
         self.register_window = Register()  # Crear una instancia de Register
         self.register_window.show()  # Mostrar la ventana de registro
-
+     
+    def Confirm(self)->"User":
+        controlador = Controller()
+        Prog = Chekitout()
+        x = controlador.confirm_user(self.User.text(), self.Password.text())
+        if x == True:
+            self.Prin()
+            self.User = Prog.create_session(self.User.text())
+            return self.User
+        elif x == False:
+            print("Nada bro")
+        elif x ==1:
+            print("Joa.. man vuelve ahorita")
         
+    def Prin(self):
+        from UI.Princial import PrincipalWg
+        self.prin = PrincipalWg()
+        self.hide()
+        self.prin.entrar()
+    
     def control_bt_normal(self):
         self.showNormal()
         self.Bt_normal.hide()

@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import QMainWindow, QApplication, QLineEdit
 from PyQt5 import QtCore, QtWidgets, uic
+from Controler import Controller
 import sys
 
 class Register(QMainWindow):
@@ -26,10 +27,19 @@ class Register(QMainWindow):
     
     def Gui_Log(self):
         from UI.Login import Loginw
-        self.hide()
-        self.LogWindonw=Loginw() #Creamos una instacia de Login
-        self.LogWindonw.show() # Mostramos a Login
 
+        if self.Password.text() == self.ConfirmPassword.text():
+            self.Reg_user()
+            self.hide()
+            self.LogWindonw=Loginw() #Creamos una instacia de Login
+            self.LogWindonw.show() # Mostramos a Login
+        else: 
+            print("No son iguales")
+        
+    def Reg_user(self):
+        controlador = Controller()
+        controlador.Register(self.Name.text(), self.LastName.text(), self.User.text(), self.Password.text())
+    
     def control_bt_normal(self):
         self.showNormal()
         self.Bt_normal.hide()
@@ -62,6 +72,7 @@ class Register(QMainWindow):
             self.showNormal()
             self.Bt_normal.hide()
             self.Bt_max.show()
+
     
 if __name__ == '__main__':
     app = QApplication(sys.argv)
