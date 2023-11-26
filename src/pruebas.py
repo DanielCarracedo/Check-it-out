@@ -1,9 +1,10 @@
 import pyodbc
 import configparser
 from datetime import datetime
-from sist import Chekitout
-from User import User
-from Task import Task
+from Modelo.sist import Chekitout
+from Modelo.User import User
+from Modelo.Task import Task
+import pickle
 
 config = configparser.ConfigParser()
 config.read(r'src\Modelo\config.ini')
@@ -58,7 +59,7 @@ def empty_tables():
                 cursor = conn.cursor()
 
                 # Vaciar la tabla Users
-                cursor.execute("DELETE FROM Users")
+                #cursor.execute("DELETE FROM Users")
 
                 # Vaciar la tabla Tasks
                 cursor.execute("DELETE FROM Tasks")

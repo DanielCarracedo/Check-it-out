@@ -30,6 +30,9 @@ class User():
         self.__tasks = []
         self.__priority = priority #valores entre 0 y 3
         self.__modo_oscuro = modo_oscuro
+    
+    def get_Name(self):
+        return self.__name
 
     def get_tasks(self) -> List["Tasks"]:
         return self.__tasks
@@ -75,7 +78,8 @@ class User():
 
     def create_task(self, categoria: str, fecha_in: dt, fecha_fin: dt, desc: str, titulo: str) -> bool:
         try:
-            from Task import Task
+            from Modelo.Task import Task
+            print("Ayuda")
             with pyodbc.connect(connection_string) as conn:
                 cursor = conn.cursor()
                 cursor.execute("SELECT MAX(ownid) FROM Tasks")

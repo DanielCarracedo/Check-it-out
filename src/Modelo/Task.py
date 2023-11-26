@@ -77,7 +77,7 @@ class Task():
     def get_ownid(self) -> int:
         return self.__ownid
     
-    def get_finished(self) -> int:
+    def get_finished(self) -> bool:
         return self.__finished
     
     def get_fecha_in(self) -> dt:
@@ -86,8 +86,12 @@ class Task():
     def get_fecha_fin(self) -> dt:
         return self.__fecha_fin
 
-    def get_desc(self) -> dt:
+    def get_desc(self) -> str:
         return self.__desc
 
-    def get_titulo(self) -> dt:
+    def get_titulo(self) -> str:
+        print(self.__titulo)
         return self.__titulo
+    
+    def get_categoria(self)->str:
+        return self.__categoria

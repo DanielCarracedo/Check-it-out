@@ -49,7 +49,7 @@ class Chekitout():
                 else: 
                     return False
         except pyodbc.Error:
-            return 1 #Si retorna 1 y no un booleano entonces hubo un error en el servidor
+            return 4 #Si retorna 1 y no un booleano entonces hubo un error en el servidor
 
     def check_user(self, username: str, psw: str) -> bool:
         try: 
@@ -67,7 +67,7 @@ class Chekitout():
                 return False
         except pyodbc.Error:
             #Si retorna 1 y no un booleano entonces hubo un error en el servidor
-            return 1
+            return 4
                 
     def check_username(self, username: str) -> bool:
         try: 
@@ -82,13 +82,13 @@ class Chekitout():
                     return False
         except pyodbc.Error:
             #Si retorna 1 y no un booleano entonces hubo un error en el servidor
-            return 1
+            return 4
     
     # Ejecutar este metodo SOLO si check_user devuelve true
     def create_session(self, username: str) -> "User()":
         try:
-            from User import User
-            from Task import Task
+            from Modelo.User import User
+            from Modelo.Task import Task
             username = return_hash(username)
             with pyodbc.connect(connection_string) as conn:
                 cursor = conn.cursor()
@@ -101,7 +101,7 @@ class Chekitout():
             session = User(resultado.uid, resultado.name,
                        resultado.lastname, resultado.username, resultado.psw, resultado.priority, resultado.modo_oscuro)
             tareas = [Task(resultado.uid, task.ownid, task.categoria,
-                       task.fecha_in, task.fecha_fin, task.desc, task.terminado, task.titulo) for task in tasks]
+                       task.fecha_in, task.fecha_fin, task.desc, task.titulo, task.terminado) for task in tasks]
             session.get_tasks().extend(tareas)
             return session
         
