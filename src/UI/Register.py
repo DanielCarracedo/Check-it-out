@@ -39,14 +39,8 @@ class Register(QMainWindow):
 
     def Reg_user(self):
         controlador = Controller()
-        x = controlador.Register(
-            self.Name.text(), self.LastName.text(), self.User.text(), self.Password.text())
-        if x == True:
-            print("me cree con exito bro")
-        elif x == False:
-            print("Nada bro, ya existe un man que se llama asi")
-        elif x == 1:
-            print("Joa se nos cayo el servidor")
+        controlador.Register(self, self.Name.text(
+        ), self.LastName.text(), self.User.text(), self.Password.text())
 
     def control_bt_normal(self):
         self.showNormal()
