@@ -35,6 +35,7 @@ class PrincipalWg(QMainWindow):
         self.adjustColumns(self.tableWidget_2)
         self.populateTable()
         self.tableWidget.itemClicked.connect(self.mostrar_informacion)
+        self.tableWidget_2.itemClicked.connect(self.mostrar_informacion)
         
         # Crear un hilo para ejecutar send_notification
         hilo = threading.Thread(target=self.ejecutar_notificacion)
