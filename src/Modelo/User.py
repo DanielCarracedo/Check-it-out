@@ -20,17 +20,17 @@ connection_string = (
 
 
 class User():
-    def __init__(self, uid: int, name: str, lastname: str, username: str, psw: str, 
-                priority: int = 2, modo_oscuro: bool = False) -> None:
+    def __init__(self, uid: int, name: str, lastname: str, username: str, psw: str,
+                 priority: int = 2, modo_oscuro: bool = False) -> None:
         self.__id = uid
         self.__name = name
         self.__lastname = lastname
         self.__username = username
         self.__psw = psw
         self.__tasks = []
-        self.__priority = priority #valores entre 0 y 3
+        self.__priority = priority  # valores entre 0 y 3
         self.__modo_oscuro = modo_oscuro
-    
+
     def get_Name(self):
         return self.__name
 
@@ -39,37 +39,37 @@ class User():
 
     def get_priority(self) -> int:
         return self.__priority
-    
+
     def set_oscurodb(self) -> bool:
-        try: 
+        try:
             with pyodbc.connect(connection_string) as conn:
                 cursor = conn.cursor()
                 cursor.execute('UPDATE Users SET modo_oscuro=? WHERE uid=?',
-                           True, self.__id)
+                               True, self.__id)
                 conn.commit()
             self.__modo_oscuro = True
             return True
         except pyodbc.Error:
             return False
-        
+
     def set_clarodb(self) -> bool:
-        try: 
+        try:
             with pyodbc.connect(connection_string) as conn:
                 cursor = conn.cursor()
                 cursor.execute('UPDATE Users SET modo_oscuro=? WHERE uid=?',
-                           False, self.__id)
+                               False, self.__id)
                 conn.commit()
             self.__modo_oscuro = False
             return True
         except pyodbc.Error:
             return False
-        
+
     def set_priority(self, priority) -> bool:
         try:
             with pyodbc.connect(connection_string) as conn:
                 cursor = conn.cursor()
                 cursor.execute('UPDATE Users SET priority=? WHERE uid=?',
-                           priority, self.__id)
+                               priority, self.__id)
                 conn.commit()
             self.__priority = priority
             return True
@@ -82,7 +82,8 @@ class User():
             print("Ayuda")
             with pyodbc.connect(connection_string) as conn:
                 cursor = conn.cursor()
-                cursor.execute("SELECT MAX(ownid) FROM Tasks")
+                cursor.execute(
+                    "SELECT MAX(ownid) FROM Tasks WHERE uid=?", self.__id)
                 ownid = cursor.fetchone()[0]
 
             if ownid == None:
@@ -90,12 +91,13 @@ class User():
             else:
                 ownid += 1
 
-            tarea = Task(self.__id, ownid, categoria, fecha_in, fecha_fin, desc, titulo)
+            tarea = Task(self.__id, ownid, categoria,
+                         fecha_in, fecha_fin, desc, titulo)
             self.__tasks.append(tarea)
             with pyodbc.connect(connection_string) as conn:
                 cursor = conn.cursor()
                 cursor.execute('INSERT INTO Tasks (uid, ownid, categoria, fecha_in, fecha_fin, "desc", terminado, titulo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
-                           self.__id, ownid, categoria, fecha_in, fecha_fin, desc, False, titulo)
+                               self.__id, ownid, categoria, fecha_in, fecha_fin, desc, False, titulo)
             return True
         except pyodbc.Error:
             return False

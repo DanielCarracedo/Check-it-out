@@ -36,8 +36,8 @@ class PrincipalWg(QMainWindow):
         self.adjustColumns(self.tableWidget)
         self.adjustColumns(self.tableWidget_2)
         Controller.llenar_tabla(self, True)
-        self.tableWidget.itemClicked.connect(self.mostrar_informacion)
-        self.tableWidget_2.itemClicked.connect(self.mostrar_informacion)
+        self.tableWidget.itemClicked.connect(self.interactuar_tablas)
+        self.tableWidget_2.itemClicked.connect(self.interactuar_tablas1)
 
         # Crear un hilo para ejecutar send_notification
         hilo = threading.Thread(target=self.ejecutar_notificacion)
@@ -52,10 +52,34 @@ class PrincipalWg(QMainWindow):
         # Llamar a la función send_notification en el hilo secundario
         Modelo.notifications.send_notification(self.us)
 
-    def mostrar_informacion(self, item):
-        # Obtener el texto del elemento clicado
-        texto = item.text()
+    def interactuar_tablas(self, item):
+        columna_clicada = item.column()
+        fila_clicada = item.row()
+        # Realizar la acción correspondiente según la columna
+        if columna_clicada == 5:
+            for task in self.us.get_tasks():
+                if task.get_ownid() == fila_clicada:
+                    if item.text() == "No completado":
+                        mensaje = f"¿Seguro que deseas marcar la Tarea #{fila_clicada + 1} como completa?"
+                        respuesta = QMessageBox.question(
+                            self, 'Confirmación', mensaje, QMessageBox.Yes | QMessageBox.No)
+                        if respuesta == QMessageBox.Yes:
+                            task.set_completed()
+                    else:
+                        mensaje = f"¿Seguro que deseas marcar la Tarea #{fila_clicada + 1} como No completa?"
+                        respuesta = QMessageBox.question(
+                            self, 'Confirmación', mensaje, QMessageBox.Yes | QMessageBox.No)
+                        if respuesta == QMessageBox.Yes:
+                            task.set_uncompleted()
+            Controller.llenar_tabla(self, True)
+        else:
+            # Obtener el texto del elemento clicado
+            texto = item.text()
+        # Mostrar un cuadro de diálogo de información
+            QMessageBox.information(self, 'Información', f'{texto}')
 
+    def interactuar_tablas1(self, item):
+        texto = item.text()
         # Mostrar un cuadro de diálogo de información
         QMessageBox.information(self, 'Información', f'{texto}')
 

@@ -20,14 +20,14 @@ def proximity_notification(user="User"):
         if x != 0:
             for task in user.get_tasks():
                 f2 = task.get_fecha_fin()
-                tiempo_restante = f2 - datetime.now()
+                tiempo_restante = datetime.now() - f2
                 completed = task.get_finished()
                 # Verificar notificaciones para tareas cercanas
-                if tiempo_restante > timedelta(0):
+                if tiempo_restante > timedelta(seconds=0):
                     if tiempo_restante < timedelta(hours=1) and completed == False:
                         notificacion("Fecha Cercana",
                                      f"Te queda menos de 1 hora para '{task.get_titulo()}'")
-                    elif timedelta(hours=4) < tiempo_restante < timedelta(hours=12) and completed == False:
+                    elif tiempo_restante < timedelta(hours=12) and completed == False:
                         notificacion(
                             "Fecha Cercana", f"Te quedan menos de 12 horas para '{task.get_titulo()}'")
             time.sleep(60 * 60)
@@ -42,10 +42,12 @@ def send_notification(user="User"):
                 f1 = task.get_fecha_in()
                 f2 = task.get_fecha_fin()
                 diferencia = f2 - f1
-                tiempo_restante = f2 - datetime.now()
+                tiempo_restante = datetime.now() - f2
                 completed = task.get_finished()
                 # Verificar tiempo restante y prioridad
-                if diferencia < timedelta(0):
+                print(tiempo_restante.total_seconds())
+                if tiempo_restante > timedelta(seconds=0):
+                    print("entre aqui")
                     if x == 1 and tiempo_restante < (diferencia * 0.1) and completed == False:
                         cont += 1
                     elif x == 2 and tiempo_restante < (diferencia * 0.25) and completed == False:
@@ -56,15 +58,15 @@ def send_notification(user="User"):
         # Verificar si hay tareas pendientes para enviar notificación
         if cont > 0 and x == 1:
             notificacion(
-                "Tareas", f"Le queda 10% del tiempo para completar {cont} tarea\s")
+                "Tareas", f"Le queda menos de 10% del tiempo para completar {cont} tarea\s")
 
         elif cont > 0 and x == 2:
             notificacion(
-                "Tareas", f"Le queda 25% del tiempo para completar {cont} tarea\s")
+                "Tareas", f"Le queda menos de 25% del tiempo para completar {cont} tarea\s")
 
         elif cont > 0 and x == 3:
             notificacion(
-                "Tareas", f"Le queda la mitad del tiempo para completar {cont} tarea\s")
+                "Tareas", f"Le queda menos de la mitad del tiempo para completar {cont} tarea\s")
 
         if x == 1:
             time.sleep(90 * 60)
