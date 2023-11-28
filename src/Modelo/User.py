@@ -33,12 +33,18 @@ class User():
 
     def get_Name(self):
         return self.__name
+    
+    def get_Lastname(self):
+        return self.__lastname
 
     def get_tasks(self) -> List["Tasks"]:
         return self.__tasks
 
     def get_priority(self) -> int:
         return self.__priority
+    
+    def get_oscuro(self):
+        return self.__modo_oscuro
 
     def set_oscurodb(self) -> bool:
         try:
@@ -111,6 +117,8 @@ class User():
             for task in self.__tasks:
                 if id == task.get_ownid():
                     self.__tasks.remove(task)
+                if id < task.get_ownid():
+                    task.set_ownid()
             return True
         except pyodbc.Error:
             return False

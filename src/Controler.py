@@ -63,7 +63,8 @@ class Controller():
                     f'{task.get_desc()}',
                     f'{task.get_fecha_fin()}',
                     # Columna para el estado (Completado/No completado)
-                    f'{est}'
+                    f'{est}',
+                    f' '
                 ]
                 # Usar deepcopy para agregar una copia de 'info' a 'data'
                 data.append(deepcopy(info))
@@ -88,7 +89,8 @@ class Controller():
                         f'{task.get_desc()}',
                         f'{task.get_fecha_fin()}',
                         # Columna para el estado (Completado/No completado)
-                        f'{est}'
+                        f'{est}',
+                        f' '
                     ]
                     # Usar deepcopy para agregar una copia de 'info' a 'data'
                     data.append(deepcopy(info))
@@ -102,3 +104,19 @@ class Controller():
                 for j, col in enumerate(row):
                     item = QTableWidgetItem(col)
                     window.tableWidget_2.setItem(i, j, item)
+                    
+    def llenar_info(windonw):
+        windonw.label_16.setText(windonw.us.get_Name()+" "+windonw.us.get_Lastname())
+        cont = 0
+        for task in windonw.us.get_tasks():
+            cont +=1
+        windonw.label_17.setText(f'{cont}')
+        if windonw.us.get_oscuro():
+            windonw.Oscuro.setChecked(True)
+            windonw.invertir_colores(True)
+        else:
+            windonw.Oscuro.setChecked(False)
+            windonw.invertir_colores(False)
+            
+        windonw.Noti.setCurrentIndex( windonw.us.get_priority())
+        print(windonw.us.get_priority())

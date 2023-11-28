@@ -73,6 +73,19 @@ class Task():
             return True
         except pyodbc.Error:
             return False
+    
+    def set_ownid(self):
+        try:
+            new_id = self.__ownid-1
+            with pyodbc.connect(connection_string) as conn:
+                cursor = conn.cursor()
+                cursor.execute('UPDATE Tasks SET ownid=? WHERE ownid=?',
+                           new_id, self.__ownid)
+                conn.commit()
+            self.__ownid = new_id
+            return True
+        except pyodbc.Error:
+            return False
 
     def get_ownid(self) -> int:
         return self.__ownid

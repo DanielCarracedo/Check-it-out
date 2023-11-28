@@ -73,7 +73,7 @@ background-color:rgb(90, 90, 90);
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(253, 253, 253);</string>
+    <string notr="true">background-color: rgb(253, 253, 253)</string>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout_2">
     <item>
@@ -173,7 +173,8 @@ border:none;
              <property name="styleSheet">
               <string notr="true">background-color: rgba(0, 0,  0, 0);
 border: none;
-border-bottom: 2px solid rgba(105, 118, 132, 255);
+border-bottom: 2px solid rgba(105, 118, 132, 255); 
+
 </string>
              </property>
              <property name="placeholderText">
@@ -497,7 +498,7 @@ background-color: None;
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>0</y>
+             <y>-81</y>
              <width>611</width>
              <height>1200</height>
             </rect>
@@ -563,7 +564,7 @@ background-color: None;
                   <number>0</number>
                  </property>
                  <widget class="QWidget" name="Principal">
-                  <layout class="QHBoxLayout" name="horizontalLayout_8">
+                  <layout class="QVBoxLayout" name="verticalLayout_6">
                    <property name="spacing">
                     <number>0</number>
                    </property>
@@ -587,7 +588,7 @@ background-color: None;
                      <property name="frameShadow">
                       <enum>QFrame::Raised</enum>
                      </property>
-                     <layout class="QVBoxLayout" name="verticalLayout_6">
+                     <layout class="QVBoxLayout" name="verticalLayout_28">
                       <item>
                        <spacer name="verticalSpacer_6">
                         <property name="orientation">
@@ -684,7 +685,15 @@ background-color: None;
                             <string>Estado</string>
                            </property>
                           </column>
+                          <column>
+                           <property name="text">
+                            <string>Eliminar</string>
+                           </property>
+                          </column>
                          </widget>
+                        </item>
+                        <item>
+                         <layout class="QHBoxLayout" name="horizontalLayout_22"/>
                         </item>
                        </layout>
                       </item>
@@ -791,6 +800,27 @@ background-color: None;
                             <width>16777215</width>
                             <height>10002</height>
                            </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QCalendarWidget QAbstractItemView {
+    background-color: #ffffff; /* Cambia el color del fondo de la parte superior */
+    selection-background-color: #3498db; /* Cambia el color de fondo de la selección */
+    font-family: &quot;Lucida Calligraphy&quot;, cursive; /* Cambia el tipo de fuente del texto */
+}
+
+QCalendarWidget QWidget#qt_calendar_navigationbar {
+    background-color: #3498db; /* Cambia el color de fondo de la parte superior */
+    color: #ffffff; /* Cambia el color del texto */
+    font-family: &quot;Lucida Calligraphy&quot;, cursive; /* Cambia el tipo de fuente del texto */
+    font-size: 20px; /* Cambia el tamaño de la fuente */
+}
+
+QCalendarWidget QToolButton {
+
+    background-color: #3498db; /* Cambia el color de fondo de los botones */
+    border: none; /* Elimina el borde de los botones */
+    font-family: &quot;Lucida Calligraphy&quot;, cursive; /* Cambia el tipo de fuente del texto */
+}</string>
                           </property>
                          </widget>
                         </item>
@@ -971,7 +1001,7 @@ background-color: None;
                      <property name="frameShadow">
                       <enum>QFrame::Raised</enum>
                      </property>
-                     <layout class="QVBoxLayout" name="verticalLayout_20">
+                     <layout class="QVBoxLayout" name="verticalLayout_18">
                       <item>
                        <spacer name="verticalSpacer_16">
                         <property name="orientation">
@@ -986,133 +1016,109 @@ background-color: None;
                        </spacer>
                       </item>
                       <item>
-                       <layout class="QVBoxLayout" name="verticalLayout_19">
+                       <widget class="QLabel" name="label_10">
+                        <property name="font">
+                         <font>
+                          <family>Lucida Calligraphy</family>
+                          <pointsize>20</pointsize>
+                          <weight>75</weight>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="text">
+                         <string>Crear Nueva Tarea</string>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <layout class="QVBoxLayout" name="verticalLayout_17">
                         <item>
-                         <layout class="QVBoxLayout" name="verticalLayout_18">
+                         <layout class="QVBoxLayout" name="verticalLayout_15">
+                          <property name="spacing">
+                           <number>0</number>
+                          </property>
                           <item>
-                           <widget class="QLabel" name="label_10">
-                            <property name="font">
-                             <font>
-                              <family>Lucida Calligraphy</family>
-                              <pointsize>20</pointsize>
-                              <weight>75</weight>
-                              <bold>true</bold>
-                             </font>
-                            </property>
-                            <property name="text">
-                             <string>Crear Nueva Tarea</string>
-                            </property>
-                            <property name="alignment">
-                             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                            </property>
-                           </widget>
-                          </item>
-                          <item>
-                           <spacer name="verticalSpacer_14">
-                            <property name="orientation">
-                             <enum>Qt::Vertical</enum>
-                            </property>
-                            <property name="sizeHint" stdset="0">
-                             <size>
-                              <width>20</width>
-                              <height>40</height>
-                             </size>
-                            </property>
-                           </spacer>
-                          </item>
-                          <item>
-                           <layout class="QVBoxLayout" name="verticalLayout_17">
-                            <property name="spacing">
-                             <number>0</number>
-                            </property>
+                           <layout class="QHBoxLayout" name="horizontalLayout_12">
                             <item>
-                             <layout class="QVBoxLayout" name="verticalLayout_16">
-                              <property name="spacing">
-                               <number>0</number>
-                              </property>
+                             <layout class="QVBoxLayout" name="verticalLayout_11">
                               <item>
-                               <layout class="QHBoxLayout" name="horizontalLayout_11">
-                                <item>
-                                 <layout class="QVBoxLayout" name="verticalLayout_11">
-                                  <item>
-                                   <widget class="QLabel" name="label_4">
-                                    <property name="text">
-                                     <string>Nombre de la tarea</string>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                  <item>
-                                   <widget class="QLineEdit" name="Tarea_Name">
-                                    <property name="styleSheet">
-                                     <string notr="true">background-color: rgba(0, 0,  0, 0);
+                               <widget class="QLabel" name="label_4">
+                                <property name="text">
+                                 <string>Nombre de la tarea</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QLineEdit" name="Tarea_Name">
+                                <property name="styleSheet">
+                                 <string notr="true">background-color: rgba(0, 0,  0, 0);
 border: none;
 border-bottom: 2px solid rgba(105, 118, 132, 255);
 </string>
-                                    </property>
-                                    <property name="placeholderText">
-                                     <string>Nombre para la tarea</string>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                 </layout>
-                                </item>
-                                <item>
-                                 <spacer name="horizontalSpacer_2">
-                                  <property name="orientation">
-                                   <enum>Qt::Horizontal</enum>
-                                  </property>
-                                  <property name="sizeHint" stdset="0">
-                                   <size>
-                                    <width>40</width>
-                                    <height>20</height>
-                                   </size>
-                                  </property>
-                                 </spacer>
-                                </item>
-                                <item>
-                                 <layout class="QVBoxLayout" name="verticalLayout_12">
-                                  <item>
-                                   <widget class="QLabel" name="label_5">
-                                    <property name="text">
-                                     <string>Fecha de inicio </string>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                  <item>
-                                   <widget class="QDateEdit" name="F_Inicio">
-                                    <property name="styleSheet">
-                                     <string notr="true"/>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                 </layout>
-                                </item>
-                                <item>
-                                 <spacer name="horizontalSpacer_3">
-                                  <property name="orientation">
-                                   <enum>Qt::Horizontal</enum>
-                                  </property>
-                                  <property name="sizeHint" stdset="0">
-                                   <size>
-                                    <width>40</width>
-                                    <height>20</height>
-                                   </size>
-                                  </property>
-                                 </spacer>
-                                </item>
-                                <item>
-                                 <layout class="QVBoxLayout" name="verticalLayout_13">
-                                  <item>
-                                   <widget class="QLabel" name="label_9">
-                                    <property name="text">
-                                     <string>Selecciona un tipo de tarea</string>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                  <item>
-                                   <widget class="QComboBox" name="Tipo">
-                                    <property name="styleSheet">
-                                     <string notr="true">QComboBox {
+                                </property>
+                                <property name="placeholderText">
+                                 <string>Nombre para la tarea</string>
+                                </property>
+                               </widget>
+                              </item>
+                             </layout>
+                            </item>
+                            <item>
+                             <spacer name="horizontalSpacer_2">
+                              <property name="orientation">
+                               <enum>Qt::Horizontal</enum>
+                              </property>
+                              <property name="sizeHint" stdset="0">
+                               <size>
+                                <width>40</width>
+                                <height>20</height>
+                               </size>
+                              </property>
+                             </spacer>
+                            </item>
+                            <item>
+                             <layout class="QVBoxLayout" name="verticalLayout_12">
+                              <item>
+                               <widget class="QLabel" name="label_5">
+                                <property name="text">
+                                 <string>Fecha de inicio </string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QDateTimeEdit" name="F_Inicio"/>
+                              </item>
+                             </layout>
+                            </item>
+                            <item>
+                             <spacer name="horizontalSpacer_3">
+                              <property name="orientation">
+                               <enum>Qt::Horizontal</enum>
+                              </property>
+                              <property name="sizeHint" stdset="0">
+                               <size>
+                                <width>40</width>
+                                <height>20</height>
+                               </size>
+                              </property>
+                             </spacer>
+                            </item>
+                            <item>
+                             <layout class="QVBoxLayout" name="verticalLayout_13">
+                              <item>
+                               <widget class="QLabel" name="label_9">
+                                <property name="text">
+                                 <string>Selecciona un tipo de tarea</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QComboBox" name="Tipo">
+                                <property name="styleSheet">
+                                 <string notr="true">QComboBox {
     /* Fondo del QComboBox */
     background-color: #F0F0F0;
     /* Bordes */
@@ -1137,146 +1143,158 @@ QComboBox::down-arrow {
     width: 10px;
     height: 10px;
 }</string>
-                                    </property>
-                                    <item>
-                                     <property name="text">
-                                      <string>Trabajo</string>
-                                     </property>
-                                    </item>
-                                    <item>
-                                     <property name="text">
-                                      <string>Escolar</string>
-                                     </property>
-                                    </item>
-                                    <item>
-                                     <property name="text">
-                                      <string>Familiar</string>
-                                     </property>
-                                    </item>
-                                    <item>
-                                     <property name="text">
-                                      <string>Cocina</string>
-                                     </property>
-                                    </item>
-                                    <item>
-                                     <property name="text">
-                                      <string>Amigos/as</string>
-                                     </property>
-                                    </item>
-                                    <item>
-                                     <property name="text">
-                                      <string>Otros</string>
-                                     </property>
-                                    </item>
-                                   </widget>
-                                  </item>
-                                 </layout>
+                                </property>
+                                <item>
+                                 <property name="text">
+                                  <string>Trabajo</string>
+                                 </property>
                                 </item>
-                               </layout>
+                                <item>
+                                 <property name="text">
+                                  <string>Escolar</string>
+                                 </property>
+                                </item>
+                                <item>
+                                 <property name="text">
+                                  <string>Familiar</string>
+                                 </property>
+                                </item>
+                                <item>
+                                 <property name="text">
+                                  <string>Cocina</string>
+                                 </property>
+                                </item>
+                                <item>
+                                 <property name="text">
+                                  <string>Amigos/as</string>
+                                 </property>
+                                </item>
+                                <item>
+                                 <property name="text">
+                                  <string>Otros</string>
+                                 </property>
+                                </item>
+                               </widget>
+                              </item>
+                             </layout>
+                            </item>
+                           </layout>
+                          </item>
+                          <item>
+                           <layout class="QHBoxLayout" name="horizontalLayout_11">
+                            <item>
+                             <layout class="QVBoxLayout" name="verticalLayout_14">
+                              <item>
+                               <widget class="QLabel" name="label_7">
+                                <property name="text">
+                                 <string>Fecha de Fin </string>
+                                </property>
+                               </widget>
                               </item>
                               <item>
-                               <layout class="QHBoxLayout" name="horizontalLayout_12">
-                                <item>
-                                 <layout class="QVBoxLayout" name="verticalLayout_14">
-                                  <item>
-                                   <widget class="QLabel" name="label_7">
-                                    <property name="text">
-                                     <string>Fecha de Fin </string>
-                                    </property>
-                                   </widget>
-                                  </item>
-                                  <item>
-                                   <widget class="QDateEdit" name="F_Fin"/>
-                                  </item>
-                                 </layout>
-                                </item>
-                                <item>
-                                 <spacer name="horizontalSpacer_4">
-                                  <property name="orientation">
-                                   <enum>Qt::Horizontal</enum>
-                                  </property>
-                                  <property name="sizeHint" stdset="0">
-                                   <size>
-                                    <width>40</width>
-                                    <height>20</height>
-                                   </size>
-                                  </property>
-                                 </spacer>
-                                </item>
-                                <item>
-                                 <layout class="QVBoxLayout" name="verticalLayout_15"/>
-                                </item>
-                               </layout>
+                               <widget class="QDateTimeEdit" name="F_Fin"/>
                               </item>
                              </layout>
                             </item>
                             <item>
-                             <widget class="QLabel" name="label_8">
-                              <property name="text">
-                               <string>Descripcion</string>
+                             <spacer name="horizontalSpacer_4">
+                              <property name="orientation">
+                               <enum>Qt::Horizontal</enum>
                               </property>
-                             </widget>
-                            </item>
-                            <item>
-                             <widget class="QLineEdit" name="Descripcion">
-                              <property name="minimumSize">
+                              <property name="sizeHint" stdset="0">
                                <size>
-                                <width>0</width>
-                                <height>300</height>
+                                <width>40</width>
+                                <height>20</height>
                                </size>
                               </property>
-                             </widget>
+                             </spacer>
                             </item>
                            </layout>
                           </item>
                          </layout>
                         </item>
                         <item>
-                         <spacer name="verticalSpacer_15">
+                         <layout class="QVBoxLayout" name="verticalLayout_16">
+                          <item>
+                           <widget class="QLabel" name="label_8">
+                            <property name="text">
+                             <string>Descripcion</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QLineEdit" name="Descripcion">
+                            <property name="minimumSize">
+                             <size>
+                              <width>0</width>
+                              <height>300</height>
+                             </size>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </item>
+                       </layout>
+                      </item>
+                      <item>
+                       <spacer name="verticalSpacer_14">
+                        <property name="orientation">
+                         <enum>Qt::Vertical</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>579</width>
+                          <height>13</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <spacer name="verticalSpacer_15">
+                        <property name="orientation">
+                         <enum>Qt::Vertical</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>581</width>
+                          <height>13</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <layout class="QHBoxLayout" name="horizontalLayout_13">
+                        <item>
+                         <spacer name="horizontalSpacer_5">
                           <property name="orientation">
-                           <enum>Qt::Vertical</enum>
+                           <enum>Qt::Horizontal</enum>
                           </property>
                           <property name="sizeHint" stdset="0">
                            <size>
-                            <width>20</width>
-                            <height>40</height>
+                            <width>40</width>
+                            <height>20</height>
                            </size>
                           </property>
                          </spacer>
                         </item>
                         <item>
-                         <layout class="QHBoxLayout" name="horizontalLayout_13">
-                          <item>
-                           <spacer name="horizontalSpacer_5">
-                            <property name="orientation">
-                             <enum>Qt::Horizontal</enum>
-                            </property>
-                            <property name="sizeHint" stdset="0">
-                             <size>
-                              <width>40</width>
-                              <height>20</height>
-                             </size>
-                            </property>
-                           </spacer>
-                          </item>
-                          <item>
-                           <widget class="QPushButton" name="New">
-                            <property name="minimumSize">
-                             <size>
-                              <width>100</width>
-                              <height>25</height>
-                             </size>
-                            </property>
-                            <property name="font">
-                             <font>
-                              <family>Lucida Calligraphy</family>
-                              <pointsize>12</pointsize>
-                              <weight>75</weight>
-                              <bold>true</bold>
-                             </font>
-                            </property>
-                            <property name="styleSheet">
-                             <string notr="true">QPushButton{
+                         <widget class="QPushButton" name="New">
+                          <property name="minimumSize">
+                           <size>
+                            <width>100</width>
+                            <height>25</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Lucida Calligraphy</family>
+                            <pointsize>12</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QPushButton{
 
 background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(20, 47, 78, 219), stop:1 rgba(85, 98, 112, 226));
 
@@ -1297,13 +1315,11 @@ padding-top:5px;
 
 background-color:rgba(105, 118, 132, 200);
 }</string>
-                            </property>
-                            <property name="text">
-                             <string>Crear</string>
-                            </property>
-                           </widget>
-                          </item>
-                         </layout>
+                          </property>
+                          <property name="text">
+                           <string>Crear</string>
+                          </property>
+                         </widget>
                         </item>
                        </layout>
                       </item>
@@ -1316,6 +1332,508 @@ background-color:rgba(105, 118, 132, 200);
                          <size>
                           <width>20</width>
                           <height>659</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                 <widget class="QWidget" name="Settings_2">
+                  <layout class="QHBoxLayout" name="horizontalLayout_14">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <widget class="QFrame" name="frame_8">
+                     <property name="frameShape">
+                      <enum>QFrame::StyledPanel</enum>
+                     </property>
+                     <property name="frameShadow">
+                      <enum>QFrame::Raised</enum>
+                     </property>
+                     <layout class="QVBoxLayout" name="verticalLayout_27">
+                      <item>
+                       <spacer name="verticalSpacer_24">
+                        <property name="orientation">
+                         <enum>Qt::Vertical</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>20</width>
+                          <height>121</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <layout class="QVBoxLayout" name="verticalLayout_26">
+                        <item>
+                         <layout class="QHBoxLayout" name="horizontalLayout_21">
+                          <item>
+                           <widget class="QLabel" name="label_19">
+                            <property name="font">
+                             <font>
+                              <family>Lucida Calligraphy</family>
+                              <pointsize>20</pointsize>
+                              <weight>75</weight>
+                              <bold>true</bold>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>Settings</string>
+                            </property>
+                            <property name="alignment">
+                             <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <spacer name="horizontalSpacer_13">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeType">
+                             <enum>QSizePolicy::Maximum</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>80</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
+                         </layout>
+                        </item>
+                        <item>
+                         <layout class="QVBoxLayout" name="verticalLayout_25">
+                          <item>
+                           <layout class="QHBoxLayout" name="horizontalLayout_20">
+                            <item>
+                             <spacer name="horizontalSpacer_14">
+                              <property name="orientation">
+                               <enum>Qt::Horizontal</enum>
+                              </property>
+                              <property name="sizeType">
+                               <enum>QSizePolicy::Maximum</enum>
+                              </property>
+                              <property name="sizeHint" stdset="0">
+                               <size>
+                                <width>70</width>
+                                <height>20</height>
+                               </size>
+                              </property>
+                             </spacer>
+                            </item>
+                            <item>
+                             <widget class="QLabel" name="label_13">
+                              <property name="font">
+                               <font>
+                                <family>Lucida Calligraphy</family>
+                                <pointsize>15</pointsize>
+                                <weight>75</weight>
+                                <bold>true</bold>
+                               </font>
+                              </property>
+                              <property name="text">
+                               <string>User information</string>
+                              </property>
+                              <property name="margin">
+                               <number>0</number>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </item>
+                          <item>
+                           <layout class="QHBoxLayout" name="horizontalLayout_19">
+                            <item>
+                             <spacer name="horizontalSpacer_11">
+                              <property name="orientation">
+                               <enum>Qt::Horizontal</enum>
+                              </property>
+                              <property name="sizeType">
+                               <enum>QSizePolicy::Maximum</enum>
+                              </property>
+                              <property name="sizeHint" stdset="0">
+                               <size>
+                                <width>20</width>
+                                <height>13</height>
+                               </size>
+                              </property>
+                             </spacer>
+                            </item>
+                            <item>
+                             <layout class="QVBoxLayout" name="verticalLayout_22">
+                              <item>
+                               <layout class="QHBoxLayout" name="horizontalLayout_16">
+                                <item>
+                                 <widget class="QLabel" name="label_14">
+                                  <property name="minimumSize">
+                                   <size>
+                                    <width>10</width>
+                                    <height>0</height>
+                                   </size>
+                                  </property>
+                                  <property name="maximumSize">
+                                   <size>
+                                    <width>130</width>
+                                    <height>16777215</height>
+                                   </size>
+                                  </property>
+                                  <property name="font">
+                                   <font>
+                                    <pointsize>10</pointsize>
+                                    <weight>75</weight>
+                                    <bold>true</bold>
+                                    <kerning>false</kerning>
+                                   </font>
+                                  </property>
+                                  <property name="text">
+                                   <string>Nombre del usuario:</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item>
+                                 <spacer name="horizontalSpacer_9">
+                                  <property name="orientation">
+                                   <enum>Qt::Horizontal</enum>
+                                  </property>
+                                  <property name="sizeType">
+                                   <enum>QSizePolicy::Maximum</enum>
+                                  </property>
+                                  <property name="sizeHint" stdset="0">
+                                   <size>
+                                    <width>25</width>
+                                    <height>20</height>
+                                   </size>
+                                  </property>
+                                 </spacer>
+                                </item>
+                                <item>
+                                 <widget class="QLabel" name="label_16">
+                                  <property name="font">
+                                   <font>
+                                    <pointsize>10</pointsize>
+                                   </font>
+                                  </property>
+                                  <property name="text">
+                                   <string/>
+                                  </property>
+                                 </widget>
+                                </item>
+                               </layout>
+                              </item>
+                              <item>
+                               <layout class="QHBoxLayout" name="horizontalLayout_15">
+                                <item>
+                                 <widget class="QLabel" name="label_15">
+                                  <property name="font">
+                                   <font>
+                                    <pointsize>10</pointsize>
+                                    <weight>75</weight>
+                                    <bold>true</bold>
+                                    <kerning>false</kerning>
+                                   </font>
+                                  </property>
+                                  <property name="text">
+                                   <string>Numero de tareas creadas:</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item>
+                                 <spacer name="horizontalSpacer_10">
+                                  <property name="orientation">
+                                   <enum>Qt::Horizontal</enum>
+                                  </property>
+                                  <property name="sizeType">
+                                   <enum>QSizePolicy::Minimum</enum>
+                                  </property>
+                                  <property name="sizeHint" stdset="0">
+                                   <size>
+                                    <width>25</width>
+                                    <height>20</height>
+                                   </size>
+                                  </property>
+                                 </spacer>
+                                </item>
+                                <item>
+                                 <widget class="QLabel" name="label_17">
+                                  <property name="font">
+                                   <font>
+                                    <pointsize>10</pointsize>
+                                   </font>
+                                  </property>
+                                  <property name="text">
+                                   <string/>
+                                  </property>
+                                 </widget>
+                                </item>
+                               </layout>
+                              </item>
+                             </layout>
+                            </item>
+                            <item>
+                             <spacer name="horizontalSpacer_12">
+                              <property name="orientation">
+                               <enum>Qt::Horizontal</enum>
+                              </property>
+                              <property name="sizeHint" stdset="0">
+                               <size>
+                                <width>40</width>
+                                <height>20</height>
+                               </size>
+                              </property>
+                             </spacer>
+                            </item>
+                           </layout>
+                          </item>
+                          <item>
+                           <spacer name="verticalSpacer_21">
+                            <property name="orientation">
+                             <enum>Qt::Vertical</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>20</width>
+                              <height>95</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
+                         </layout>
+                        </item>
+                        <item>
+                         <layout class="QVBoxLayout" name="verticalLayout_24">
+                          <item>
+                           <layout class="QHBoxLayout" name="horizontalLayout_17">
+                            <item>
+                             <spacer name="horizontalSpacer_15">
+                              <property name="orientation">
+                               <enum>Qt::Horizontal</enum>
+                              </property>
+                              <property name="sizeType">
+                               <enum>QSizePolicy::Maximum</enum>
+                              </property>
+                              <property name="sizeHint" stdset="0">
+                               <size>
+                                <width>70</width>
+                                <height>20</height>
+                               </size>
+                              </property>
+                             </spacer>
+                            </item>
+                            <item>
+                             <widget class="QLabel" name="label_18">
+                              <property name="font">
+                               <font>
+                                <family>Lucida Calligraphy</family>
+                                <pointsize>15</pointsize>
+                                <weight>75</weight>
+                                <bold>true</bold>
+                               </font>
+                              </property>
+                              <property name="text">
+                               <string>Options</string>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </item>
+                          <item>
+                           <layout class="QVBoxLayout" name="verticalLayout_23">
+                            <item>
+                             <layout class="QHBoxLayout" name="horizontalLayout_18">
+                              <property name="spacing">
+                               <number>0</number>
+                              </property>
+                              <item>
+                               <spacer name="horizontalSpacer_6">
+                                <property name="orientation">
+                                 <enum>Qt::Horizontal</enum>
+                                </property>
+                                <property name="sizeType">
+                                 <enum>QSizePolicy::Minimum</enum>
+                                </property>
+                                <property name="sizeHint" stdset="0">
+                                 <size>
+                                  <width>60</width>
+                                  <height>20</height>
+                                 </size>
+                                </property>
+                               </spacer>
+                              </item>
+                              <item>
+                               <layout class="QVBoxLayout" name="verticalLayout_19">
+                                <property name="spacing">
+                                 <number>0</number>
+                                </property>
+                                <item>
+                                 <widget class="QLabel" name="label_6">
+                                  <property name="font">
+                                   <font>
+                                    <pointsize>14</pointsize>
+                                   </font>
+                                  </property>
+                                  <property name="text">
+                                   <string>Modo Oscuro</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item>
+                                 <widget class="QRadioButton" name="Oscuro">
+                                  <property name="font">
+                                   <font>
+                                    <pointsize>12</pointsize>
+                                   </font>
+                                  </property>
+                                  <property name="text">
+                                   <string>Activar/Desactivar</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                               </layout>
+                              </item>
+                              <item>
+                               <spacer name="horizontalSpacer_7">
+                                <property name="orientation">
+                                 <enum>Qt::Horizontal</enum>
+                                </property>
+                                <property name="sizeType">
+                                 <enum>QSizePolicy::Maximum</enum>
+                                </property>
+                                <property name="sizeHint" stdset="0">
+                                 <size>
+                                  <width>150</width>
+                                  <height>20</height>
+                                 </size>
+                                </property>
+                               </spacer>
+                              </item>
+                              <item>
+                               <layout class="QVBoxLayout" name="verticalLayout_20">
+                                <property name="spacing">
+                                 <number>0</number>
+                                </property>
+                                <item>
+                                 <widget class="QLabel" name="label_11">
+                                  <property name="font">
+                                   <font>
+                                    <pointsize>14</pointsize>
+                                   </font>
+                                  </property>
+                                  <property name="text">
+                                   <string>Notificaciones</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item>
+                                 <widget class="QComboBox" name="Noti">
+                                  <property name="maximumSize">
+                                   <size>
+                                    <width>500</width>
+                                    <height>16777215</height>
+                                   </size>
+                                  </property>
+                                  <property name="styleSheet">
+                                   <string notr="true">QComboBox {
+    /* Fondo del QComboBox */
+    background-color: #F0F0F0;
+    /* Bordes */
+    border: 1px solid #707070;
+    /* Ajuste de relleno */
+    padding: 5px;
+    /* Alineación del texto */
+    text-align: center;
+    /* Fuente */
+    font-family: Arial;
+    font-size: 12px;
+}
+
+/* Estilo del ítem desplegado */
+QComboBox::drop-down {
+    border: none; /* Elimina el borde del ícono de despliegue */
+}
+
+/* Estilo del ítem seleccionado */
+QComboBox::down-arrow {
+    /*image: url(:/icons/down_arrow.png); /* Aquí puedes usar una imagen si lo prefieres */
+    width: 10px;
+    height: 10px;
+}</string>
+                                  </property>
+                                  <item>
+                                   <property name="text">
+                                    <string>Desactivar</string>
+                                   </property>
+                                  </item>
+                                  <item>
+                                   <property name="text">
+                                    <string>Bajo</string>
+                                   </property>
+                                  </item>
+                                  <item>
+                                   <property name="text">
+                                    <string>Normal</string>
+                                   </property>
+                                  </item>
+                                  <item>
+                                   <property name="text">
+                                    <string>Importante</string>
+                                   </property>
+                                  </item>
+                                 </widget>
+                                </item>
+                               </layout>
+                              </item>
+                              <item>
+                               <spacer name="horizontalSpacer_8">
+                                <property name="orientation">
+                                 <enum>Qt::Horizontal</enum>
+                                </property>
+                                <property name="sizeType">
+                                 <enum>QSizePolicy::Maximum</enum>
+                                </property>
+                                <property name="sizeHint" stdset="0">
+                                 <size>
+                                  <width>200</width>
+                                  <height>20</height>
+                                 </size>
+                                </property>
+                               </spacer>
+                              </item>
+                             </layout>
+                            </item>
+                           </layout>
+                          </item>
+                         </layout>
+                        </item>
+                       </layout>
+                      </item>
+                      <item>
+                       <spacer name="verticalSpacer_25">
+                        <property name="orientation">
+                         <enum>Qt::Vertical</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>20</width>
+                          <height>700</height>
                          </size>
                         </property>
                        </spacer>

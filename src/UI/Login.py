@@ -46,7 +46,7 @@ class Loginw(QMainWindow):
     def Prin(self):
         from UI.Princial import PrincipalWg
         self.prin = PrincipalWg()
-        self.close()
+        self.hide()
         self.prin.entrar()
 
     def control_bt_normal(self):
@@ -82,10 +82,10 @@ class Loginw(QMainWindow):
             self.showNormal()
             self.Bt_normal.hide()
             self.Bt_max.show()
-
-
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    my_app = Loginw()
-    my_app.show()
-    sys.exit(app.exec_())
+    
+    def volver():
+        if __name__ == '__main__':
+            app = QApplication(sys.argv)
+            my_app = Loginw()
+            my_app.show()
+            app.exec_()
