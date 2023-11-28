@@ -85,7 +85,6 @@ class User():
     def create_task(self, categoria: str, fecha_in: dt, fecha_fin: dt, desc: str, titulo: str) -> bool:
         try:
             from Modelo.Task import Task
-            print("Ayuda")
             with pyodbc.connect(connection_string) as conn:
                 cursor = conn.cursor()
                 cursor.execute(
@@ -116,7 +115,6 @@ class User():
                 conn.commit()
             for task in self.__tasks:
                 if id < task.get_ownid():
-                    print(task.get_ownid())
                     task.set_ownid()
             cont = 0
             for task in self.__tasks:

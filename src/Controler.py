@@ -15,38 +15,36 @@ class Controller():
         x = sis.register_user(name, lastname, username, psw)
         # Falta poner el mensajito en la pantalla register
         if x == True:
-            print("me cree con exito bro")
+            return True
         elif x == False:
-            print("Nada bro, ya existe un man que se llama asi")
+             window.confirm.setText("Error, usuario ya existente")
+             QTimer.singleShot(4000, lambda: window.confirm.setText(""))
         elif x == 4:
-            print("Joa se nos cayo el servidor")
+             window.confirm.setText("Error!, el servidor esta presentando problemas, intente mas tarde!")
+             QTimer.singleShot(4000, lambda: window.confirm.setText(""))
 
     def confirm_user(window, username: str, psw: str) -> bool:
         sis = Chekitout()
         x = sis.check_user(username, psw)
         if x == True:
-            print("Ok")
             usuario = sis.create_session(window.User.text())
             with open('usuario.pkl', 'wb') as archivo:
                 pickle.dump(usuario, archivo)
-            print(type(usuario))
             window.Prin()
 
         elif x == False:
-            print("algo paso")
             window.Mensaje.setText(
                 "Error! Usuario y/o contraseña incorrecta,\nverifique nuevamente")
             QTimer.singleShot(4000, lambda: window.Mensaje.setText(""))
 
         elif x == 4:
-            print("aqui estuve")
             window.Mensaje.setText(
                 "Error! El servidor presenta problemas\nintente más tarde")
             QTimer.singleShot(4000, lambda: window.Mensaje.setText(""))
 
     def new_task(user: "User", categoria: str, fecha_in: dt, fecha_fin: dt, desc: str, titulo: str) -> bool:
         X = user.create_task(categoria, fecha_in, fecha_fin, desc, titulo)
-        print(X)
+
 
     def llenar_tabla(window, page):
         data = []
@@ -119,4 +117,3 @@ class Controller():
             windonw.invertir_colores(False)
             
         windonw.Noti.setCurrentIndex( windonw.us.get_priority())
-        print(windonw.us.get_priority())

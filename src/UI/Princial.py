@@ -60,7 +60,6 @@ class PrincipalWg(QMainWindow):
     def invertir_colores(self,checked):
         # Recorrer recursivamente los widgets y cambiar colores
         if checked:
-            print(checked)
             #Guardamos los estilo que tienen los elementos a cambiar 
             Frame =self.frame_2.styleSheet()
             Edit= self.lineEdit.styleSheet()

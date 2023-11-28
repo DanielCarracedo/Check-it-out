@@ -107,5 +107,3 @@ class Chekitout():
         
         except pyodbc.Error:
             return False
-
-return_hash("Hola")

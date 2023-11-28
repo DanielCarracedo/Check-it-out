@@ -38,10 +38,11 @@ class Register(QMainWindow):
             y =False
             
         if self.Password.text() == self.ConfirmPassword.text() and y:
-            self.Reg_user()
-            self.hide()
-            self.LogWindonw = Loginw()  # Creamos una instacia de Login
-            self.LogWindonw.show()  # Mostramos a Login
+            r=self.Reg_user()
+            if r:
+                self.hide()
+                self.LogWindonw = Loginw()  # Creamos una instacia de Login
+                self.LogWindonw.show()  # Mostramos a Login
         elif y:
             self.confirm.setText("Error! las contraseñas que ingreso no son iguales,\n por favor verifique e intente nuevamente.")
             QTimer.singleShot(4000, lambda: self.confirm.setText(""))
@@ -50,8 +51,9 @@ class Register(QMainWindow):
 
     def Reg_user(self):
         controlador = Controller()
-        controlador.Register(self, self.Name.text(
+        CON=controlador.Register(self, self.Name.text(
         ), self.LastName.text(), self.User.text(), self.Password.text())
+        return CON
 
     def control_bt_normal(self):
         self.showNormal()
