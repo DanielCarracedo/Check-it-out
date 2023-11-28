@@ -36,6 +36,7 @@ class PrincipalWg(QMainWindow):
         self.TareasPen.clicked.connect(self.go_to_page3)
         self.Crear.clicked.connect(self.go_to_page4)
         self.Settings.clicked.connect(self.go_to_page5)
+        self.Perfil.clicked.connect(self.go_to_page5)
         self.LogOut.clicked.connect(self.salir)
 
         # Otras funciones de los botones
@@ -174,7 +175,9 @@ class PrincipalWg(QMainWindow):
         Controller.llenar_info(self)
         
     def salir(self):
-        from UI.Login import Loginw
+        answer=QMessageBox.information(self, 'Cerrar sesion', f'Desea usted cerrar su sesion en Check It Out?',QMessageBox.Yes|QMessageBox.No )
+        if answer==QMessageBox.Yes: 
+            self.close()
         
     def resaltar_fecha_en_calendario(self):
         for task in self.us.get_tasks():

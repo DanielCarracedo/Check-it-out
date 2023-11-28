@@ -186,7 +186,7 @@ border-bottom: 2px solid rgba(105, 118, 132, 255);
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_3">
+            <widget class="QPushButton" name="Perfil">
              <property name="cursor">
               <cursorShape>PointingHandCursor</cursorShape>
              </property>
