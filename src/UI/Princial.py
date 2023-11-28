@@ -62,7 +62,6 @@ class PrincipalWg(QMainWindow):
         if checked:
             #Guardamos los estilo que tienen los elementos a cambiar 
             Frame =self.frame_2.styleSheet()
-            Edit= self.lineEdit.styleSheet()
             t1 =self.tableWidget.styleSheet()
             t2=self.tableWidget_2.styleSheet()
             prin = self.Principal.styleSheet()
