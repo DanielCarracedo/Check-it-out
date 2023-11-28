@@ -20,14 +20,15 @@ def proximity_notification(user="User"):
         if x != 0:
             for task in user.get_tasks():
                 f2 = task.get_fecha_fin()
-                tiempo_restante = datetime.now() - f2
+                tiempo_restante = f2 - datetime.now()
+                tiempo_restante = tiempo_restante.total_seconds()
                 completed = task.get_finished()
                 # Verificar notificaciones para tareas cercanas
-                if tiempo_restante > timedelta(seconds=0):
-                    if tiempo_restante < timedelta(hours=1) and completed == False:
+                if tiempo_restante > 0:
+                    if tiempo_restante < 3600 and completed == False:
                         notificacion("Fecha Cercana",
                                      f"Te queda menos de 1 hora para '{task.get_titulo()}'")
-                    elif tiempo_restante < timedelta(hours=12) and completed == False:
+                    elif tiempo_restante < 43200 and completed == False:
                         notificacion(
                             "Fecha Cercana", f"Te quedan menos de 12 horas para '{task.get_titulo()}'")
             time.sleep(60 * 60)
@@ -42,12 +43,12 @@ def send_notification(user="User"):
                 f1 = task.get_fecha_in()
                 f2 = task.get_fecha_fin()
                 diferencia = f2 - f1
-                tiempo_restante = datetime.now() - f2
+                diferencia = diferencia.total_seconds()
+                tiempo_restante = f2 - datetime.now()
+                tiempo_restante = tiempo_restante.total_seconds()
                 completed = task.get_finished()
                 # Verificar tiempo restante y prioridad
-                print(tiempo_restante.total_seconds())
-                if tiempo_restante > timedelta(seconds=0):
-                    print("entre aqui")
+                if tiempo_restante > 0:
                     if x == 1 and tiempo_restante < (diferencia * 0.1) and completed == False:
                         cont += 1
                     elif x == 2 and tiempo_restante < (diferencia * 0.25) and completed == False:
