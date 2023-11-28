@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import QMainWindow, QApplication, QLineEdit
 from PyQt5 import QtCore, QtWidgets, uic
+from PyQt5.QtCore import QTimer
 from Controler import Controller
 from Modelo.sist import Chekitout
 import time
@@ -40,8 +41,14 @@ class Loginw(QMainWindow):
         self.register_window.show()  # Mostrar la ventana de registro
 
     def Confirm(self) -> "User":
-        x = Controller.confirm_user(
+        u=self.User.text(); p=self.Password.text()
+        if not u.strip() or not p.strip():
+            self.Mensaje.setText("Error!, hay espacios en blanco por favor, \n llene la informacion requerida.")
+            QTimer.singleShot(4000, lambda: self.Mensaje.setText(""))
+        else: 
+            x = Controller.confirm_user(
             self, self.User.text(), self.Password.text())
+        
 
     def Prin(self):
         from UI.Princial import PrincipalWg

@@ -1,8 +1,10 @@
 from PyQt5.QtWidgets import QMainWindow, QApplication, QLineEdit
 from PyQt5 import QtCore, QtWidgets, uic
+from PyQt5.QtCore import QTimer, pyqtSlot
+import datetime as dt
 from Controler import Controller
 import sys
-
+import time
 
 class Register(QMainWindow):
     def __init__(self):
@@ -28,14 +30,23 @@ class Register(QMainWindow):
 
     def Gui_Log(self):
         from UI.Login import Loginw
-
-        if self.Password.text() == self.ConfirmPassword.text():
+        y =True
+        p=self.Password.text() ; cp=self.ConfirmPassword.text(); n=self.Name.text(); ln=self.LastName.text(); u =self.User.text()
+        if not p.strip() or not cp.strip() or not n.strip() or not ln.strip() or not u.strip():
+            self.confirm.setText("Faltan campos por completar, por favor complételos para \n continuar con el proceso de manera correcta.")
+            QTimer.singleShot(4000, lambda: self.confirm.setText(""))
+            y =False
+            
+        if self.Password.text() == self.ConfirmPassword.text() and y:
             self.Reg_user()
             self.hide()
             self.LogWindonw = Loginw()  # Creamos una instacia de Login
             self.LogWindonw.show()  # Mostramos a Login
-        else:
-            print("No son iguales")
+        elif y:
+            self.confirm.setText("Error! las contraseñas que ingreso no son iguales,\n por favor verifique e intente nuevamente.")
+            QTimer.singleShot(4000, lambda: self.confirm.setText(""))
+       
+
 
     def Reg_user(self):
         controlador = Controller()

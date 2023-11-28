@@ -61,17 +61,43 @@ class PrincipalWg(QMainWindow):
         if checked:
             print(checked)
             #Guardamos los estilo que tienen los elementos a cambiar 
-            Home=self.Home.styleSheet()
             Frame =self.frame_2.styleSheet()
             Edit= self.lineEdit.styleSheet()
-
+            t1 =self.tableWidget.styleSheet()
+            t2=self.tableWidget_2.styleSheet()
+            prin = self.Principal.styleSheet()
+            la= self.label_2.styleSheet()
+            pe=self.Pendientes.styleSheet()
+            nt=self.NuevaTarea.styleSheet()
+            sett=self.Settings_2.styleSheet()
+            de=self.Descripcion.styleSheet()
             
             #Cambiamos los estilos a nuestracombeniencia
             self.centralwidget.setStyleSheet("background-color: black;")
             self.Home.setStyleSheet("color: white;")
             self.frame_2.setStyleSheet("QPushButton{border:none; color:white}")
+            self.tableWidget.setStyleSheet("background-color:gray; color:black;")
+            self.tableWidget_2.setStyleSheet("background-color:gray; color:black")
+            self.Principal.setStyleSheet("color:white;")
+            self.label_2.setStyleSheet("color:white;")
+            self.Pendientes.setStyleSheet("color:white;")
+            self.NuevaTarea.setStyleSheet("color:white;")
+            self.Settings_2.setStyleSheet("color:white;")
+            self.Descripcion.setStyleSheet("background-color:gray;")
             self.us.set_oscurodb()
         else:
+                        #Cambiamos los estilos a nuestracombeniencia
+            self.centralwidget.setStyleSheet("background-color: rgb(253, 253, 253)")
+            self.Home.setStyleSheet("")
+            self.frame_2.setStyleSheet("QPushButton{border:none;}")
+            self.tableWidget.setStyleSheet("")
+            self.tableWidget_2.setStyleSheet("")
+            self.Principal.setStyleSheet("")
+            self.label_2.setStyleSheet("")
+            self.Pendientes.setStyleSheet("")
+            self.NuevaTarea.setStyleSheet("")
+            self.Settings_2.setStyleSheet("")
+            self.Descripcion.setStyleSheet("")
             self.us.set_clarodb()
             pass
 
