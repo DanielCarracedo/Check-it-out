@@ -954,6 +954,11 @@ QCalendarWidget QToolButton {
                             <string>Estado</string>
                            </property>
                           </column>
+                          <column>
+                           <property name="text">
+                            <string>Eliminar</string>
+                           </property>
+                          </column>
                          </widget>
                         </item>
                        </layout>
