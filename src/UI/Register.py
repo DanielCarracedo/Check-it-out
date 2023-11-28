@@ -1,11 +1,13 @@
 from PyQt5.QtWidgets import QMainWindow, QApplication, QLineEdit
 from PyQt5 import QtCore, QtWidgets, uic
+from Controler import Controller
 import sys
+
 
 class Register(QMainWindow):
     def __init__(self):
         super(Register, self).__init__()
-        uic.loadUi("Register.ui",self)
+        uic.loadUi("Register.ui", self)
         self.Bt_normal.hide()
         self.click_posicion = None
         self.Registrar.clicked.connect(self.Gui_Log)
@@ -23,12 +25,22 @@ class Register(QMainWindow):
         self.gripSize = 10
         self.grip = QtWidgets.QSizeGrip(self)
         self.grip.resize(self.gripSize, self.gripSize)
-    
+
     def Gui_Log(self):
         from UI.Login import Loginw
-        self.hide()
-        self.LogWindonw=Loginw() #Creamos una instacia de Login
-        self.LogWindonw.show() # Mostramos a Login
+
+        if self.Password.text() == self.ConfirmPassword.text():
+            self.Reg_user()
+            self.hide()
+            self.LogWindonw = Loginw()  # Creamos una instacia de Login
+            self.LogWindonw.show()  # Mostramos a Login
+        else:
+            print("No son iguales")
+
+    def Reg_user(self):
+        controlador = Controller()
+        controlador.Register(self, self.Name.text(
+        ), self.LastName.text(), self.User.text(), self.Password.text())
 
     def control_bt_normal(self):
         self.showNormal()
@@ -42,7 +54,8 @@ class Register(QMainWindow):
 
     def resizeEvent(self, event):
         rect = self.rect()
-        self.grip.move(rect.right() - self.gripSize, rect.bottom() - self.gripSize)
+        self.grip.move(rect.right() - self.gripSize,
+                       rect.bottom() - self.gripSize)
 
     def mousePressEvent(self, event):
         self.click_posicion = event.globalPos()
@@ -62,7 +75,8 @@ class Register(QMainWindow):
             self.showNormal()
             self.Bt_normal.hide()
             self.Bt_max.show()
-    
+
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     my_app = Register()

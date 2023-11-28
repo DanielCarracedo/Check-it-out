@@ -1,11 +1,19 @@
 from PyQt5.QtWidgets import QMainWindow, QApplication, QLineEdit
 from PyQt5 import QtCore, QtWidgets, uic
+from Controler import Controller
+from Modelo.sist import Chekitout
+import time
 import sys
+import pickle
+
+
+global usuario
+
 
 class Loginw(QMainWindow):
     def __init__(self):
         super(Loginw, self).__init__()
-        uic.loadUi("Log.ui",self)
+        uic.loadUi("Log.ui", self)
         self.Bt_normal.hide()
         self.click_posicion = None
         self.Bt_min.clicked.connect(self.showMinimized)
@@ -13,6 +21,7 @@ class Loginw(QMainWindow):
         self.Bt_normal.clicked.connect(self.control_bt_normal)
         self.Bt_max.clicked.connect(self.control_bt_maximize)
         self.Bt_close.clicked.connect(self.close)
+        self.Enter.clicked.connect(self.Confirm)
 
         # Eliminar títulos y opacidad
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
@@ -23,14 +32,23 @@ class Loginw(QMainWindow):
         self.gripSize = 10
         self.grip = QtWidgets.QSizeGrip(self)
         self.grip.resize(self.gripSize, self.gripSize)
-    
+
     def GuiRegister(self):
         from UI.Register import Register
         self.hide()
         self.register_window = Register()  # Crear una instancia de Register
         self.register_window.show()  # Mostrar la ventana de registro
 
-        
+    def Confirm(self) -> "User":
+        x = Controller.confirm_user(
+            self, self.User.text(), self.Password.text())
+
+    def Prin(self):
+        from UI.Princial import PrincipalWg
+        self.prin = PrincipalWg()
+        self.hide()
+        self.prin.entrar()
+
     def control_bt_normal(self):
         self.showNormal()
         self.Bt_normal.hide()
@@ -43,7 +61,8 @@ class Loginw(QMainWindow):
 
     def resizeEvent(self, event):
         rect = self.rect()
-        self.grip.move(rect.right() - self.gripSize, rect.bottom() - self.gripSize)
+        self.grip.move(rect.right() - self.gripSize,
+                       rect.bottom() - self.gripSize)
 
     def mousePressEvent(self, event):
         self.click_posicion = event.globalPos()
@@ -63,9 +82,10 @@ class Loginw(QMainWindow):
             self.showNormal()
             self.Bt_normal.hide()
             self.Bt_max.show()
-  
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    my_app = Loginw()
-    my_app.show()
-    sys.exit(app.exec_())
+    
+    def volver():
+        if __name__ == '__main__':
+            app = QApplication(sys.argv)
+            my_app = Loginw()
+            my_app.show()
+            app.exec_()
