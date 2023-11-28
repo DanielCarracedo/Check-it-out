@@ -196,16 +196,26 @@ class PrincipalWg(QMainWindow):
         ini_f = ini.toPyDateTime()
         fin_f = fin.toPyDateTime()
         # Creacion de la tarea
-        Controller.new_task(self.us, self.Tipo.currentText(
-        ), ini_f, fin_f, self.Descripcion.text(), self.Tarea_Name.text())
-        # Limpiar los elementos donde se crearon la tarea
-        self.Tipo.setCurrentIndex(-1)  # Desmarcar cualquier selección
-        # Establecer la fecha mínima o limpia
-        self.F_Inicio.setDate(self.F_Inicio.minimumDate())
-        self.F_Fin.setDate(self.F_Fin.minimumDate())
-        self.Descripcion.clear()
-        self.Tarea_Name.clear()
-        self.go_to_page1()
+        self.Tipo.currentIndex()
+        if ini_f < fin_f and len(self.Descripcion.text()) < 400 and len(self.Tarea_Name.text()):
+            Controller.new_task(self.us, self.Tipo.currentText(
+            ), ini_f, fin_f, self.Descripcion.text(), self.Tarea_Name.text())
+            # Limpiar los elementos donde se crearon la tarea
+            self.Tipo.setCurrentIndex(-1)  # Desmarcar cualquier selección
+            # Establecer la fecha mínima o limpia
+            self.F_Inicio.setDate(self.F_Inicio.minimumDate())
+            self.F_Fin.setDate(self.F_Fin.minimumDate())
+            self.Descripcion.clear()
+            self.Tarea_Name.clear()
+            self.go_to_page1()
+        elif ini_f > fin_f:
+            self.mostrar_mensaje(
+                'Error', 'La fecha de inicio debe ser mayor a la fecha final')
+        elif len(self.Descripcion.text()) > 400:
+            self.mostrar_mensaje(
+                'Error', 'La descripción no puede contener más de 400 caracteres')
+        elif len(self.Tarea_Name.text()) == 0:
+            self.mostrar_mensaje('Error', 'La tarea debe tener un título')
 
     def entrar(self):
         if __name__ == '__main__':
