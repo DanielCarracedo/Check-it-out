@@ -131,6 +131,7 @@ class PrincipalWg(QMainWindow):
     def go_to_page1(self):
         self.stackedWidget.setCurrentIndex(0)
         Controller.llenar_tabla(self, True)
+        self.resaltar_fecha_en_calendario()
 
     def go_to_page2(self):
         self.stackedWidget.setCurrentIndex(1)
