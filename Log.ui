@@ -415,23 +415,6 @@ color: rgba(255, 255, 255, 230);</string>
                </widget>
               </item>
               <item>
-               <widget class="QCheckBox" name="checkBox">
-                <property name="font">
-                 <font>
-                  <family>Kristen ITC</family>
-                  <weight>75</weight>
-                  <bold>true</bold>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">color:rgb(255,255,255);</string>
-                </property>
-                <property name="text">
-                 <string>Recordar contraseña</string>
-                </property>
-               </widget>
-              </item>
-              <item>
                <widget class="QLabel" name="Mensaje">
                 <property name="font">
                  <font>
