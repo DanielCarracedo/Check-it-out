@@ -216,6 +216,14 @@ class PrincipalWg(QMainWindow):
                 'Error', 'La descripción no puede contener más de 400 caracteres')
         elif len(self.Tarea_Name.text()) == 0:
             self.mostrar_mensaje('Error', 'La tarea debe tener un título')
+   
+    def mostrar_mensaje(self, titulo, mensaje):
+        mensaje_box = QMessageBox()
+        mensaje_box.setIcon(QMessageBox.Warning)
+        mensaje_box.setWindowTitle(titulo)
+        mensaje_box.setText(mensaje)
+        mensaje_box.addButton(QMessageBox.Ok)
+        mensaje_box.exec_()
 
     def entrar(self):
         if __name__ == '__main__':
