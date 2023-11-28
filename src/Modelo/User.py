@@ -117,7 +117,9 @@ class User():
             for task in self.__tasks:
                 if id == task.get_ownid():
                     self.__tasks.remove(task)
+                    
                 if id < task.get_ownid():
+                    print(task.get_ownid())
                     task.set_ownid()
             return True
         except pyodbc.Error:
