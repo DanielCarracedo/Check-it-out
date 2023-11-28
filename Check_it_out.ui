@@ -163,29 +163,6 @@ border:none;
             </spacer>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit">
-             <property name="maximumSize">
-              <size>
-               <width>165</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">background-color: rgba(0, 0,  0, 0);
-border: none;
-border-bottom: 2px solid rgba(105, 118, 132, 255); 
-
-</string>
-             </property>
-             <property name="placeholderText">
-              <string>Buscar</string>
-             </property>
-             <property name="clearButtonEnabled">
-              <bool>false</bool>
-             </property>
-            </widget>
-           </item>
-           <item>
             <widget class="QPushButton" name="Perfil">
              <property name="cursor">
               <cursorShape>PointingHandCursor</cursorShape>
