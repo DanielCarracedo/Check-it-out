@@ -52,22 +52,23 @@ class Chekitout():
             return 4 #Si retorna 1 y no un booleano entonces hubo un error en el servidor
 
     def check_user(self, username: str, psw: str) -> bool:
-        try: 
+        try:
             username = return_hash(username)
             psw = return_hash(psw)
             with pyodbc.connect(connection_string) as conn:
                 cursor = conn.cursor()
-                cursor.execute(
-                    "SELECT COUNT(*) FROM Users WHERE username=? AND psw=?", username, psw)
+                cursor.execute("SELECT COUNT(*) FROM Users WHERE username=? AND psw=?", username, psw)
                 result = cursor.fetchone()
+                print("Result from database:", result)  # Agregamos esta línea para imprimir el valor real del cursor
             # Si el resultado es 1, las credenciales son correctas
             if result[0] == 1:
                 return True
             else:
                 return False
-        except pyodbc.Error:
-            #Si retorna 1 y no un booleano entonces hubo un error en el servidor
-            return 4
+        except pyodbc.Error as e:
+            print("Error in database query:", e)  # Agregamos esta línea para imprimir cualquier error de la base de datos
+            return False
+
                 
     def check_username(self, username: str) -> bool:
         try: 
