@@ -33,7 +33,7 @@ class User():
 
     def get_Name(self):
         return self.__name
-    
+
     def get_Lastname(self):
         return self.__lastname
 
@@ -42,7 +42,7 @@ class User():
 
     def get_priority(self) -> int:
         return self.__priority
-    
+
     def get_oscuro(self):
         return self.__modo_oscuro
 
@@ -115,10 +115,15 @@ class User():
                 cursor.execute("DELETE FROM Tasks WHERE ownid=?", id)
                 conn.commit()
             for task in self.__tasks:
-                if id == task.get_ownid():
-                    self.__tasks.remove(task)
                 if id < task.get_ownid():
+                    print(task.get_ownid())
                     task.set_ownid()
+            cont = 0
+            for task in self.__tasks:
+                if id == task.get_ownid() and cont == 0:
+                    self.__tasks.remove(task)
+                    cont += 1
+
             return True
         except pyodbc.Error:
             return False

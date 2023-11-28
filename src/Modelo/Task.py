@@ -82,7 +82,10 @@ class Task():
                 cursor.execute('UPDATE Tasks SET ownid=? WHERE ownid=?',
                            new_id, self.__ownid)
                 conn.commit()
+            print(self.__ownid)
             self.__ownid = new_id
+            print(self.__ownid)
+            print("------------")
             return True
         except pyodbc.Error:
             return False

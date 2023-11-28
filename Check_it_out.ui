@@ -186,7 +186,7 @@ border-bottom: 2px solid rgba(105, 118, 132, 255);
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_3">
+            <widget class="QPushButton" name="Perfil">
              <property name="cursor">
               <cursorShape>PointingHandCursor</cursorShape>
              </property>
@@ -498,7 +498,7 @@ background-color: None;
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>-81</y>
+             <y>0</y>
              <width>611</width>
              <height>1200</height>
             </rect>
@@ -1089,7 +1089,18 @@ border-bottom: 2px solid rgba(105, 118, 132, 255);
                                </widget>
                               </item>
                               <item>
-                               <widget class="QDateTimeEdit" name="F_Inicio"/>
+                               <widget class="QDateTimeEdit" name="F_Inicio">
+                                <property name="minimumDateTime">
+                                 <datetime>
+                                  <hour>0</hour>
+                                  <minute>0</minute>
+                                  <second>0</second>
+                                  <year>2023</year>
+                                  <month>11</month>
+                                  <day>1</day>
+                                 </datetime>
+                                </property>
+                               </widget>
                               </item>
                              </layout>
                             </item>
