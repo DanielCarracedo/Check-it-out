@@ -69,11 +69,17 @@ def empty_tables():
 
     except pyodbc.Error as e:
         print(f"Error al vaciar las tablas: {e}")
+
+
 empty_tables()
-c =Chekitout()
-U=c.create_session('PP01')
-U.create_task("Cocina", datetime(2023,11,27), datetime(2024,1,1),"Amos a ver una vaina ahi ", "Ayuda he estado programando desde las 3 de la tarde")
-U.create_task("Cocina", datetime(2023,11,28), datetime(2024,2,1),"Amos a ver una vaina ahi ", "Ayuda  estado programando desde las 3 de la tarde")
-U.create_task("Cocina", datetime(2023,11,29), datetime(2024,3,1),"Amos a ver una vaina ahi ", "Ayuda he  programando desde las 3 de la tarde")
-U.create_task("Cocina", datetime(2023,11,30), datetime(2024,4,1),"Amos a ver una vaina ahi ", "Ayuda he estado programando desde las 3 de la ")
+c = Chekitout()
+U = c.create_session('Jando')
+U.create_task("Cocina", datetime(2023, 11, 27), datetime(2024, 1, 1),
+              "Amos a ver una vaina ahi ", "Ayuda he estado programando desde las 3 de la tarde")
+U.create_task("Cocina", datetime(2023, 11, 28), datetime(2024, 2, 1),
+              "Amos a ver una vaina ahi ", "Ayuda  estado programando desde las 3 de la tarde")
+U.create_task("Cocina", datetime(2023, 11, 29), datetime(2024, 3, 1),
+              "Amos a ver una vaina ahi ", "Ayuda he  programando desde las 3 de la tarde")
+U.create_task("Cocina", datetime(2023, 11, 30), datetime(2024, 4, 1),
+              "Amos a ver una vaina ahi ", "Ayuda he estado programando desde las 3 de la ")
 print_users_and_tasks()
