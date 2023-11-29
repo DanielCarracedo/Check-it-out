@@ -32,6 +32,7 @@ def proximity_notification(user="User"):
                         notificacion(
                             "Fecha Cercana", f"Te quedan menos de 12 horas para '{task.get_titulo()}'")
             time.sleep(60 * 60)
+        break
 
 
 def send_notification(user="User"):
@@ -73,3 +74,4 @@ def send_notification(user="User"):
             time.sleep(90 * 60)
         else:
             time.sleep(60*60)
+        break
